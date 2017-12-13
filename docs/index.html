@@ -57,6 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="QtCore/" />
+    
     
 
     </head>
@@ -91,6 +93,32 @@
             
                     
                     简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="QtCore/">
+            
+                <a href="QtCore/">
+            
+                    
+                    QtCore
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="QtGui/">
+            
+                <a href="QtGui/">
+            
+                    
+                    QtGui
             
                 </a>
             
@@ -149,9 +177,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 12月 13 16:06:24 2017 (+0800)
-;; Last-Updated: 三 12月 13 18:46:45 2017 (+0800)
+;; Last-Updated: 三 12月 13 18:50:25 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 5
+;;     Update #: 6
 ;; URL: http://wuhongyi.cn -->
 
 
@@ -195,7 +223,8 @@
 </li>
 <li>QtTest&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x5BF9;Qt&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x548C;&#x5E93;&#x8FDB;&#x884C;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#xFF08;unit testing&#xFF09;&#x7684;&#x7C7B;&#x3002;
 </li></ul>
-<p>UNIX&#x5E73;&#x53F0;&#x7684;Qt4&#x7248;&#x672C;&#x8FD8;&#x5305;&#x542B;QtDBus&#x6269;&#x5C55;&#x6A21;&#x5757;&#xFF0C;&#x8BE5;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x4E86;&#x4F7F;&#x7528;D-Bus&#x8FDB;&#x884C;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#xFF08;Inter-Process Communication&#xFF0C;IPC&#xFF09;&#x7684;Qt&#x7C7B;&#x3002;</p><p>&#x5728;qmake&#x5DE5;&#x7A0B;&#x4E2D;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x5DF2;&#x7ECF;&#x5305;&#x542B;&#x4E86;QtCore&#x548C;QtGui&#x6A21;&#x5757;&#xFF08;&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x4F7F;&#x7528;QtGui&#x6A21;&#x5757;&#xFF0C;&#x800C;&#x4EC5;&#x4EC5;&#x4F7F;&#x7528;QtCore&#x94FE;&#x63A5;&#x7A0B;&#x5E8F;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;qmake&#x5DE5;&#x7A0B;&#x6587;&#x4EF6;&#x4E2D;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x201C;QT-=gui&#x201D;&#x6765;&#x53D6;&#x6D88;&#x5BF9;QtGui&#x6A21;&#x5757;&#x7684;&#x5305;&#x542B;&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x65E0;&#x9700;&#x914D;&#x7F6E;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x7C7B;&#x3002;&#x800C;&#x5BF9;&#x4E8E;Qt&#x7684;&#x5176;&#x5B83;&#x6A21;&#x5757;&#xFF0C;&#x5728;&#x4F7F;&#x7528;&#x4E4B;&#x524D;&#x5FC5;&#x987B;&#x5728;qmake&#x5DE5;&#x7A0B;&#x6587;&#x4EF6;&#x4E2D;&#x901A;&#x8FC7;QT&#x9009;&#x9879;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#x3002;</p><p>&#x4E00;&#x822C;&#x53EF;&#x4EE5;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x901A;&#x8FC7;#include<qtgui qtgui="">&#x5305;&#x542B;&#x6574;&#x4E2A;QtGui&#x6A21;&#x5757;&#x6240;&#x6709;&#x7C7B;&#x7684;&#x5934;&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;QtGui&#x662F;&#x6A21;&#x5757;&#x540D;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;QtGui&#x662F;QtGui&#x6A21;&#x5757;&#xFF08;&#x6587;&#x4EF6;&#x5939;&#xFF09;&#x4E0B;&#x7684;&#x9884;&#x5B9A;&#x4E49;&#x5934;&#x6587;&#x4EF6;&#xFF08;&#x6216;&#x8005;&#x4F7F;&#x7528;#include<qtgui>&#xFF0C;&#x5176;&#x6548;&#x679C;&#x76F8;&#x540C;&#xFF0C;&#x4E0D;&#x8FC7;&#x6B64;&#x65F6;<qtgui>&#x662F;QtGui&#x6A21;&#x5757;&#xFF08;&#x6587;&#x4EF6;&#x5939;&#xFF09;&#x4E0B;&#x7684;&#x9884;&#x5B9A;&#x4E49;&#x5934;&#x6587;&#x4EF6;&#xFF09;&#xFF1B;&#x4E5F;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x5305;&#x542B;&#x67D0;&#x4E2A;&#x7C7B;&#x7684;&#x5934;&#x6587;&#x4EF6;&#xFF1A;#include<qtgui qapplication="">(&#x6216;&#x8005;#include<qapplication>)</qapplication></qtgui></qtgui></qtgui></qtgui></p><!-- README.md ends here -->
+<p>UNIX&#x5E73;&#x53F0;&#x7684;Qt4&#x7248;&#x672C;&#x8FD8;&#x5305;&#x542B;QtDBus&#x6269;&#x5C55;&#x6A21;&#x5757;&#xFF0C;&#x8BE5;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x4E86;&#x4F7F;&#x7528;D-Bus&#x8FDB;&#x884C;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x4FE1;&#xFF08;Inter-Process Communication&#xFF0C;IPC&#xFF09;&#x7684;Qt&#x7C7B;&#x3002;</p><p>&#x5728;qmake&#x5DE5;&#x7A0B;&#x4E2D;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x5DF2;&#x7ECF;&#x5305;&#x542B;&#x4E86;QtCore&#x548C;QtGui&#x6A21;&#x5757;&#xFF08;&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x4F7F;&#x7528;QtGui&#x6A21;&#x5757;&#xFF0C;&#x800C;&#x4EC5;&#x4EC5;&#x4F7F;&#x7528;QtCore&#x94FE;&#x63A5;&#x7A0B;&#x5E8F;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;qmake&#x5DE5;&#x7A0B;&#x6587;&#x4EF6;&#x4E2D;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x201C;QT-=gui&#x201D;&#x6765;&#x53D6;&#x6D88;&#x5BF9;QtGui&#x6A21;&#x5757;&#x7684;&#x5305;&#x542B;&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x65E0;&#x9700;&#x914D;&#x7F6E;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E24;&#x4E2A;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x7C7B;&#x3002;&#x800C;&#x5BF9;&#x4E8E;Qt&#x7684;&#x5176;&#x5B83;&#x6A21;&#x5757;&#xFF0C;&#x5728;&#x4F7F;&#x7528;&#x4E4B;&#x524D;&#x5FC5;&#x987B;&#x5728;qmake&#x5DE5;&#x7A0B;&#x6587;&#x4EF6;&#x4E2D;&#x901A;&#x8FC7;QT&#x9009;&#x9879;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#x3002;</p><pre><code class="lang-text">&#x4E00;&#x822C;&#x53EF;&#x4EE5;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x901A;&#x8FC7;#include&lt;QtGui/QtGui&gt;&#x5305;&#x542B;&#x6574;&#x4E2A;QtGui&#x6A21;&#x5757;&#x6240;&#x6709;&#x7C7B;&#x7684;&#x5934;&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;QtGui&#x662F;&#x6A21;&#x5757;&#x540D;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;QtGui&#x662F;QtGui&#x6A21;&#x5757;&#xFF08;&#x6587;&#x4EF6;&#x5939;&#xFF09;&#x4E0B;&#x7684;&#x9884;&#x5B9A;&#x4E49;&#x5934;&#x6587;&#x4EF6;&#xFF08;&#x6216;&#x8005;&#x4F7F;&#x7528;#include&lt;QtGui&gt;&#xFF0C;&#x5176;&#x6548;&#x679C;&#x76F8;&#x540C;&#xFF0C;&#x4E0D;&#x8FC7;&#x6B64;&#x65F6;&lt;QtGui&gt;&#x662F;QtGui&#x6A21;&#x5757;&#xFF08;&#x6587;&#x4EF6;&#x5939;&#xFF09;&#x4E0B;&#x7684;&#x9884;&#x5B9A;&#x4E49;&#x5934;&#x6587;&#x4EF6;&#xFF09;&#xFF1B;&#x4E5F;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x5305;&#x542B;&#x67D0;&#x4E2A;&#x7C7B;&#x7684;&#x5934;&#x6587;&#x4EF6;&#xFF1A;#include&lt;QtGui/Qapplication&gt;(&#x6216;&#x8005;#include&lt;Qapplication&gt;)</code></pre>
+<!-- README.md ends here -->
 
 
 
@@ -226,6 +255,10 @@
             
                 
                 
+                <a href="QtCore/" class="navigation navigation-next navigation-unique" aria-label="Next page: QtCore">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
             
         
     </div>
@@ -233,7 +266,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"简介","level":"1.1","depth":1,"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-12-13T10:46:46.202Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-12-13T10:47:35.354Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"简介","level":"1.1","depth":1,"next":{"title":"QtCore","level":"1.2","depth":1,"path":"QtCore/README.md","ref":"QtCore/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-12-13T10:50:25.971Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2017-12-13T16:54:26.978Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

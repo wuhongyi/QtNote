@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 12月 13 16:06:24 2017 (+0800)
-;; Last-Updated: 三 12月 13 18:46:45 2017 (+0800)
+;; Last-Updated: 三 12月 13 18:50:25 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 5
+;;     Update #: 6
 ;; URL: http://wuhongyi.cn -->
 
 # 简介
@@ -40,7 +40,10 @@ UNIX平台的Qt4版本还包含QtDBus扩展模块，该模块提供了使用D-Bu
 
 在qmake工程中，默认情况下已经包含了QtCore和QtGui模块（如果不想使用QtGui模块，而仅仅使用QtCore链接程序，可以在qmake工程文件中通过使用“QT-=gui”来取消对QtGui模块的包含），因此无需配置就可以使用这两个模块中的类。而对于Qt的其它模块，在使用之前必须在qmake工程文件中通过QT选项进行配置。
 
+```text
 一般可以在应用程序中通过#include<QtGui/QtGui>包含整个QtGui模块所有类的头文件，其中第一个QtGui是模块名，第二个QtGui是QtGui模块（文件夹）下的预定义头文件（或者使用#include<QtGui>，其效果相同，不过此时<QtGui>是QtGui模块（文件夹）下的预定义头文件）；也可以单独包含某个类的头文件：#include<QtGui/Qapplication>(或者#include<Qapplication>)
+```
+
 
 
 <!-- README.md ends here -->
