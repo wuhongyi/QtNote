@@ -9,6 +9,7 @@
 		  - [QAbstractButton*](QtGui/qabstractbutton.md)
 		  - [QApplication*](QtGui/qapplication.md)
 		  - [QFrame*](QtGui/qframe.md)
+		  - [QGridLayout*](QtGui/qgridlayout.md)
 		  - [QLabel*](QtGui/qlabel.md)
 		  - [QPaintDevice*](QtGui/qpaintdevice.md)
 		  - [QPushButton*](QtGui/qpushbutton.md)
@@ -270,8 +271,7 @@ QGraphicsView
 qgraphicsview.h
 QGraphicsWidget
 qgraphicswidget.h
-QGridLayout
-qgridlayout.h
+
 QGroupBox
 qgroupbox.h
 QGtkStyle
@@ -427,7 +427,6 @@ qmovie.h
 QPageSetupDialog
 qpagesetupdialog.h
 
-
 QPaintEngine
 qpaintengine.h
 QPaintEngineState
@@ -510,7 +509,6 @@ QProxyScreen
 QProxyScreenCursor
 QProxyStyle
 qproxystyle.h
-
 
 QQnxMouseHandler
 QQnxScreen
@@ -780,7 +778,6 @@ QWheelEvent
 QWidgetAction
 qwidgetaction.h
 
-
 QWidgetItem
 QWidgetItemV2
 QWidgetList
@@ -958,7 +955,6 @@ qcontiguouscache.h
 QContiguousCacheTypedData
 QCOORD
 
-
 qcoreevent.h
 QCryptographicHash
 qcryptographichash.h
@@ -1116,8 +1112,6 @@ qobjectcleanuphandler.h
 
 qobjectdefs.h
 
-
-
 QPair
 qpair.h
 QParallelAnimationGroup
@@ -1243,7 +1237,6 @@ qtextboundaryfinder.h
 QTextCodecFactoryInterface
 QTextCodecPlugin
 qtextcodecplugin.h
-
 
 QTextIStream
 QTextOStream
