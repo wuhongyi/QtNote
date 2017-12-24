@@ -1,0 +1,992 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>QEventLoop* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="qfile.html" />
+    
+    
+    <link rel="prev" href="qcoreevent.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    QtCore
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="qlocale_blackberry.html">
+            
+                <a href="qlocale_blackberry.html">
+            
+                    
+                    QBBSystemLocaleData*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="qcoreapplication.html">
+            
+                <a href="qcoreapplication.html">
+            
+                    
+                    QCoreApplication*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="qdatetime.html">
+            
+                <a href="qdatetime.html">
+            
+                    
+                    QDate/QDateTime*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="qdir.html">
+            
+                <a href="qdir.html">
+            
+                    
+                    QDir*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="qcoreevent.html">
+            
+                <a href="qcoreevent.html">
+            
+                    
+                    QEvent/QActionEvent*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.6" data-path="qeventloop.html">
+            
+                <a href="qeventloop.html">
+            
+                    
+                    QEventLoop*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="qfile.html">
+            
+                <a href="qfile.html">
+            
+                    
+                    QFile*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="qfileinfo.html">
+            
+                <a href="qfileinfo.html">
+            
+                    
+                    QFileInfo/QFileInfoList/QFileInfoListIterator*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="qglobal.html">
+            
+                <a href="qglobal.html">
+            
+                    
+                    QGlobalStatic/QGlobalStaticDeleter/Q_INT8/Q_INT16/Q_INT32/Q_INT64/QIntegerForSize
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="qiodevice.html">
+            
+                <a href="qiodevice.html">
+            
+                    
+                    QIODevice*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="qlocale.html">
+            
+                <a href="qlocale.html">
+            
+                    
+                    QLocale*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="qobject.html">
+            
+                <a href="qobject.html">
+            
+                    
+                    QObject/QObjectData/QObjectList/QObjectUserData*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="qprocess.html">
+            
+                <a href="qprocess.html">
+            
+                    
+                    QProcess/QProcessEnvironment*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="qresource.html">
+            
+                <a href="qresource.html">
+            
+                    
+                    QResource*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="qstring.html">
+            
+                <a href="qstring.html">
+            
+                    
+                    QString/QStringRef*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="qstringlist.html">
+            
+                <a href="qstringlist.html">
+            
+                    
+                    QStringList/QStringListIterator*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="qnamespace.html">
+            
+                <a href="qnamespace.html">
+            
+                    
+                    Qt/QInternal*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="qtextcodec.html">
+            
+                <a href="qtextcodec.html">
+            
+                    
+                    QTextCodec/QTextDecoder/QTextEncoder*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="qtextstream.html">
+            
+                <a href="qtextstream.html">
+            
+                    
+                    QTextStream/QTextIStream/QTextOStream/QTextStreamFunction/QTextStreamManipulator*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="qvariant.html">
+            
+                <a href="qvariant.html">
+            
+                    
+                    QVariant*
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../QtGui/">
+            
+                <a href="../QtGui/">
+            
+                    
+                    QtGui
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../QtGui/qevent.html">
+            
+                <a href="../QtGui/qevent.html">
+            
+                    
+                    QClipboardEvent/QCloseEvent/QDropEvent/QHelpEvent/QHideEvent/QHoverEvent/QIconDragEvent/QInputEvent/QInputMethodEvent/QKeyEvent/QMouseEvent/QMoveEvent/QPaintEvent/QShowEvent/QTabletEvent/QToolBarChangeEvent/QTouchEvent/QUpdateLaterEvent/QWheelEvent/QWindowStateChangeEvent*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../QtGui/qabstractbutton.html">
+            
+                <a href="../QtGui/qabstractbutton.html">
+            
+                    
+                    QAbstractButton*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../QtGui/qaction.html">
+            
+                <a href="../QtGui/qaction.html">
+            
+                    
+                    QAction*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../QtGui/qactiongroup.html">
+            
+                <a href="../QtGui/qactiongroup.html">
+            
+                    
+                    QActionGroup*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../QtGui/qapplication.html">
+            
+                <a href="../QtGui/qapplication.html">
+            
+                    
+                    QApplication*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../QtGui/qboxlayout.html">
+            
+                <a href="../QtGui/qboxlayout.html">
+            
+                    
+                    QBoxLayout/QHBoxLayout/QVBoxLayout*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../QtGui/qcheckbox.html">
+            
+                <a href="../QtGui/qcheckbox.html">
+            
+                    
+                    QCheckBox*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../QtGui/qcolor.html">
+            
+                <a href="../QtGui/qcolor.html">
+            
+                    
+                    QColor*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="../QtGui/qcolordialog.html">
+            
+                <a href="../QtGui/qcolordialog.html">
+            
+                    
+                    QColorDialog*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="../QtGui/qcombobox.html">
+            
+                <a href="../QtGui/qcombobox.html">
+            
+                    
+                    QComboBox*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="../QtGui/qdialog.html">
+            
+                <a href="../QtGui/qdialog.html">
+            
+                    
+                    QDialog*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.12" data-path="../QtGui/qerrormessage.html">
+            
+                <a href="../QtGui/qerrormessage.html">
+            
+                    
+                    QErrorMessage*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13" data-path="../QtGui/qfiledialog.html">
+            
+                <a href="../QtGui/qfiledialog.html">
+            
+                    
+                    QFileDialog*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.14" data-path="../QtGui/qfontdialog.html">
+            
+                <a href="../QtGui/qfontdialog.html">
+            
+                    
+                    QFontDialog*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.15" data-path="../QtGui/qframe.html">
+            
+                <a href="../QtGui/qframe.html">
+            
+                    
+                    QFrame*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.16" data-path="../QtGui/qgridlayout.html">
+            
+                <a href="../QtGui/qgridlayout.html">
+            
+                    
+                    QGridLayout*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.17" data-path="../QtGui/qicon.html">
+            
+                <a href="../QtGui/qicon.html">
+            
+                    
+                    QIcon*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.18" data-path="../QtGui/qinputdialog.html">
+            
+                <a href="../QtGui/qinputdialog.html">
+            
+                    
+                    QInputDialog*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.19" data-path="../QtGui/qlabel.html">
+            
+                <a href="../QtGui/qlabel.html">
+            
+                    
+                    QLabel*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.20" data-path="../QtGui/qlineedit.html">
+            
+                <a href="../QtGui/qlineedit.html">
+            
+                    
+                    QLineEdit*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.21" data-path="../QtGui/qmessagebox.html">
+            
+                <a href="../QtGui/qmessagebox.html">
+            
+                    
+                    QMessageBox*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.22" data-path="../QtGui/qpagesetupdialog.html">
+            
+                <a href="../QtGui/qpagesetupdialog.html">
+            
+                    
+                    QPageSetupDialog*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.23" data-path="../QtGui/qpaintdevice.html">
+            
+                <a href="../QtGui/qpaintdevice.html">
+            
+                    
+                    QPaintDevice*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.24" data-path="../QtGui/qpalette.html">
+            
+                <a href="../QtGui/qpalette.html">
+            
+                    
+                    QPalette/QColorGroup*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.25" data-path="../QtGui/qprintdialog.html">
+            
+                <a href="../QtGui/qprintdialog.html">
+            
+                    
+                    QPrintDialog*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.26" data-path="../QtGui/qprogressbar.html">
+            
+                <a href="../QtGui/qprogressbar.html">
+            
+                    
+                    QProgressBar*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.27" data-path="../QtGui/qprogressdialog.html">
+            
+                <a href="../QtGui/qprogressdialog.html">
+            
+                    
+                    QProgressDialog*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.28" data-path="../QtGui/qpushbutton.html">
+            
+                <a href="../QtGui/qpushbutton.html">
+            
+                    
+                    QPushButton*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.29" data-path="../QtGui/qsizepolicy.html">
+            
+                <a href="../QtGui/qsizepolicy.html">
+            
+                    
+                    QSizePolicy*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.30" data-path="../QtGui/qtextedit.html">
+            
+                <a href="../QtGui/qtextedit.html">
+            
+                    
+                    QTextEdit*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.31" data-path="../QtGui/qtablewidget.html">
+            
+                <a href="../QtGui/qtablewidget.html">
+            
+                    
+                    QTableWidget/QTableWidgetItem/QTableWidgetSelectionRange*
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.32" data-path="../QtGui/qwidget.html">
+            
+                <a href="../QtGui/qwidget.html">
+            
+                    
+                    QWidget/QWidgetData*
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >QEventLoop*</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <!-- qeventloop.md --- 
+;; 
+;; Description: 
+;; Author: Hongyi Wu(吴鸿毅)
+;; Email: wuhongyi@qq.com 
+;; Created: 日 12月 24 21:19:45 2017 (+0800)
+;; Last-Updated: 日 12月 24 21:20:44 2017 (+0800)
+;;           By: Hongyi Wu(吴鸿毅)
+;;     Update #: 1
+;; URL: http://wuhongyi.cn -->
+<h1 id="qeventloop">qeventloop</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// QEventLoop : public QObject</span>
+
+
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">QEventLoop</span><span class="hljs-params">(QObject *parent = <span class="hljs-number">0</span>)</span></span>;
+    ~QEventLoop();
+
+    <span class="hljs-keyword">enum</span> ProcessEventsFlag {
+        AllEvents = <span class="hljs-number">0x00</span>,
+        ExcludeUserInputEvents = <span class="hljs-number">0x01</span>,
+        ExcludeSocketNotifiers = <span class="hljs-number">0x02</span>,
+        WaitForMoreEvents = <span class="hljs-number">0x04</span>,
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> QT3_SUPPORT</span>
+        ExcludeUserInput = ExcludeUserInputEvents,
+        WaitForMore = WaitForMoreEvents,
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+    X11ExcludeTimers = <span class="hljs-number">0x08</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> QT_DEPRECATED</span>
+    , DeferredDeletion = <span class="hljs-number">0x10</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+        , EventLoopExec = <span class="hljs-number">0x20</span>
+        , DialogExec = <span class="hljs-number">0x40</span>
+    };
+    Q_DECLARE_FLAGS(ProcessEventsFlags, ProcessEventsFlag)
+
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">processEvents</span><span class="hljs-params">(ProcessEventsFlags flags = AllEvents)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">processEvents</span><span class="hljs-params">(ProcessEventsFlags flags, <span class="hljs-keyword">int</span> maximumTime)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">exec</span><span class="hljs-params">(ProcessEventsFlags flags = AllEvents)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">exit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> returnCode = <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isRunning</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">wakeUp</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-keyword">public</span> Q_SLOTS:
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">quit</span><span class="hljs-params">()</span></span>;
+</code></pre>
+<!-- qeventloop.md ends here -->
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="qcoreevent.html" class="navigation navigation-prev " aria-label="Previous page: QEvent/QActionEvent*">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="qfile.html" class="navigation navigation-next " aria-label="Next page: QFile*">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"QEventLoop*","level":"1.2.6","depth":2,"next":{"title":"QFile*","level":"1.2.7","depth":2,"path":"QtCore/qfile.md","ref":"QtCore/qfile.md","articles":[]},"previous":{"title":"QEvent/QActionEvent*","level":"1.2.5","depth":2,"path":"QtCore/qcoreevent.md","ref":"QtCore/qcoreevent.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtCore/qeventloop.md","mtime":"2017-12-24T13:20:44.537Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T16:37:38.106Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

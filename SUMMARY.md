@@ -2,57 +2,58 @@
 
 * [简介](README.md)
 * [QtCore](QtCore/README.md)
-	* [QBBSystemLocaleData](QtCore/qlocale_blackberry.md)
+	* [QBBSystemLocaleData*](QtCore/qlocale_blackberry.md)
 	* [QCoreApplication*](QtCore/qcoreapplication.md)
-	* [QDate/QDateTime](QtCore/qdatetime.md)
-	* [QDir](QtCore/qdir.md)
-	* [QEvent/QActionEvent](QtCore/qcoreevent.md)
-	* [QEventLoop](QtCore/qeventloop.md)
-	* [QFile](QtCore/qfile.md)
-	* [QFileInfo/QFileInfoList/QFileInfoListIterator](QtCore/qfileinfo.md)
+	* [QDate/QDateTime*](QtCore/qdatetime.md)
+	* [QDir*](QtCore/qdir.md)
+	* [QEvent/QActionEvent*](QtCore/qcoreevent.md)
+	* [QEventLoop*](QtCore/qeventloop.md)
+	* [QFile*](QtCore/qfile.md)
+	* [QFileInfo/QFileInfoList/QFileInfoListIterator*](QtCore/qfileinfo.md)
 	* [QGlobalStatic/QGlobalStaticDeleter/Q_INT8/Q_INT16/Q_INT32/Q_INT64/QIntegerForSize](QtCore/qglobal.md)
-	* [QIODevice](QtCore/qiodevice.md)
+	* [QIODevice*](QtCore/qiodevice.md)
 	* [QLocale*](QtCore/qlocale.md)
 	* [QObject/QObjectData/QObjectList/QObjectUserData*](QtCore/qobject.md)
 	* [QProcess/QProcessEnvironment*](QtCore/qprocess.md)
-	* [QResource](QtCore/qresource.md)
+	* [QResource*](QtCore/qresource.md)
 	* [QString/QStringRef*](QtCore/qstring.md)
 	* [QStringList/QStringListIterator*](QtCore/qstringlist.md)
-	* [Qt/QInternal](QtCore/qnamespace.md)
+	* [Qt/QInternal*](QtCore/qnamespace.md)
     * [QTextCodec/QTextDecoder/QTextEncoder*](QtCore/qtextcodec.md)
-	* [QTextStream/QTextIStream/QTextOStream/QTextStreamFunction/QTextStreamManipulator](QtCore/qtextstream.md)
-	* [QVariant](QtCore/qvariant.md)
+	* [QTextStream/QTextIStream/QTextOStream/QTextStreamFunction/QTextStreamManipulator*](QtCore/qtextstream.md)
+	* [QVariant*](QtCore/qvariant.md)
 * [QtGui](QtGui/README.md)
+	* [QClipboardEvent/QCloseEvent/QDropEvent/QHelpEvent/QHideEvent/QHoverEvent/QIconDragEvent/QInputEvent/QInputMethodEvent/QKeyEvent/QMouseEvent/QMoveEvent/QPaintEvent/QShowEvent/QTabletEvent/QToolBarChangeEvent/QTouchEvent/QUpdateLaterEvent/QWheelEvent/QWindowStateChangeEvent*](QtGui/qevent.md)
 	* [QAbstractButton*](QtGui/qabstractbutton.md)
-	* [QAction](QtGui/qaction.md)
-	* [QActionGroup](QtGui/qactiongroup.md)
+	* [QAction*](QtGui/qaction.md)
+	* [QActionGroup*](QtGui/qactiongroup.md)
     * [QApplication*](QtGui/qapplication.md)
 	* [QBoxLayout/QHBoxLayout/QVBoxLayout*](QtGui/qboxlayout.md)
-	* [QCheckBox](QtGui/qcheckbox.md)
+	* [QCheckBox*](QtGui/qcheckbox.md)
 	* [QColor*](QtGui/qcolor.md)
 	* [QColorDialog*](QtGui/qcolordialog.md)
-	* [QComboBox](QtGui/qcombobox.md)
+	* [QComboBox*](QtGui/qcombobox.md)
 	* [QDialog*](QtGui/qdialog.md)
-	* [QErrorMessage*](QtGui/qerrormessage.h)
+	* [QErrorMessage*](QtGui/qerrormessage.md)
 	* [QFileDialog*](QtGui/qfiledialog.md)
 	* [QFontDialog*](QtGui/qfontdialog.md)
     * [QFrame*](QtGui/qframe.md)
     * [QGridLayout*](QtGui/qgridlayout.md)
-	* [QIcon](QtGui/qicon.md)
+	* [QIcon*](QtGui/qicon.md)
 	* [QInputDialog*](QtGui/qinputdialog.md)
     * [QLabel*](QtGui/qlabel.md)
 	* [QLineEdit*](QtGui/qlineedit.md)
 	* [QMessageBox*](QtGui/qmessagebox.md)
 	* [QPageSetupDialog*](QtGui/qpagesetupdialog.md)
     * [QPaintDevice*](QtGui/qpaintdevice.md)
-	* [QPalette](QtGui/qpalette.md)
-	* [QPrintDialog](QtGui/qprintdialog.md)
-	* [QProgressBar](QtGui/qprogressbar.md)
-	* [QProgressDialog](QtGui/qprogressdialog.md)
+	* [QPalette/QColorGroup*](QtGui/qpalette.md)
+	* [QPrintDialog*](QtGui/qprintdialog.md)
+	* [QProgressBar*](QtGui/qprogressbar.md)
+	* [QProgressDialog*](QtGui/qprogressdialog.md)
     * [QPushButton*](QtGui/qpushbutton.md)
-	* [QSizePolicy](QtGui/qsizepolicy.md)
-	* [QTextEdit](QtGui/qtextedit.h)
-	* [QTableWidget/QTableWidgetItem/QTableWidgetSelectionRange](QtGui/qtablewidget.md)
+	* [QSizePolicy*](QtGui/qsizepolicy.md)
+	* [QTextEdit*](QtGui/qtextedit.md)
+	* [QTableWidget/QTableWidgetItem/QTableWidgetSelectionRange*](QtGui/qtablewidget.md)
     * [QWidget/QWidgetData*](QtGui/qwidget.md)
 
 <!--
@@ -128,11 +129,7 @@ qcdestyle.h
 QCleanlooksStyle
 qcleanlooksstyle.h
 QClipboard
-QClipboardEvent
 qclipboard.h
-QCloseEvent
-
-QColorGroup
 
 QColormap
 qcolormap.h
@@ -196,9 +193,6 @@ QDragLeaveEvent
 QDragMoveEvent
 QDragResponseEvent
 qdrawutil.h
-QDropEvent
-
-qevent.h
 
 QFileIconProvider
 qfileiconprovider.h
@@ -306,11 +300,7 @@ qguifunctions_wince.h
 
 QHeaderView
 qheaderview.h
-QHelpEvent
-QHideEvent
-QHoverEvent
 
-QIconDragEvent
 QIconEngine
 QIconEngineFactoryInterface
 QIconEngineFactoryInterfaceV2
@@ -342,8 +332,6 @@ qinputcontext.h
 QInputContextPlugin
 qinputcontextplugin.h
 
-QInputEvent
-QInputMethodEvent
 QIntfbScreen
 QIntMouseHandler
 QIntValidator
@@ -368,7 +356,7 @@ qkbd_qws.h
 qkbdtty_qws.h
 qkbdum_qws.h
 qkbdvfb_qws.h
-QKeyEvent
+
 QKeyEventTransition
 qkeyeventtransition.h
 QKeySequence
@@ -433,7 +421,7 @@ QMouseDriverFactory
 qmousedriverfactory_qws.h
 QMouseDriverPlugin
 qmousedriverplugin_qws.h
-QMouseEvent
+
 QMouseEventTransition
 qmouseeventtransition.h
 qmouseintegrity_qws.h
@@ -444,7 +432,7 @@ qmouseqnx_qws.h
 qmouse_qws.h
 qmousetslib_qws.h
 qmousevfb_qws.h
-QMoveEvent
+
 QMovie
 qmovie.h
 
@@ -457,7 +445,6 @@ QPainterPath
 qpainterpath.h
 QPainterPathPrivate
 QPainterPathStroker
-QPaintEvent
 
 QPanGesture
 QPen
@@ -581,7 +568,7 @@ qsessionmanager.h
 QShortcut
 QShortcutEvent
 qshortcut.h
-QShowEvent
+
 QSizeGrip
 qsizegrip.h
 
@@ -680,7 +667,7 @@ QSystemTrayIcon
 qsystemtrayicon.h
 QTabBar
 qtabbar.h
-QTabletEvent
+
 QTableView
 qtableview.h
 
@@ -735,7 +722,7 @@ QtGui
 QTileRules
 QTimeEdit
 QToolBar
-QToolBarChangeEvent
+
 qtoolbar.h
 QToolBox
 qtoolbox.h
@@ -743,7 +730,7 @@ QToolButton
 qtoolbutton.h
 QToolTip
 qtooltip.h
-QTouchEvent
+
 QTransform
 QTransformedScreen
 qtransform.h
@@ -765,7 +752,7 @@ qundostack.h
 QUndoView
 qundoview.h
 QUnixPrintWidget
-QUpdateLaterEvent
+
 QValidator
 qvalidator.h
 QVBoxLayout
@@ -784,7 +771,6 @@ QVFbScreen
 QWhatsThis
 QWhatsThisClickedEvent
 qwhatsthis.h
-QWheelEvent
 
 QWidgetAction
 qwidgetaction.h
@@ -803,7 +789,7 @@ QWindowsMobileStyle
 qwindowsmobilestyle.h
 QWindowsStyle
 qwindowsstyle.h
-QWindowStateChangeEvent
+
 QWindowsVistaStyle
 qwindowsvistastyle.h
 QWindowsXPStyle
