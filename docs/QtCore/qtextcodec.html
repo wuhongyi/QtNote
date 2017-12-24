@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>QtCore · GitBook</title>
+        <title>QTextCodec/QTextDecoder/QTextEncoder* · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="qlocale_blackberry.html" />
+    <link rel="next" href="qtextstream.md" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="qnamespace.md" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="./">
+        <li class="chapter " data-level="1.2" data-path="./">
             
                 <a href="./">
             
@@ -337,7 +337,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.18" data-path="qtextcodec.html">
+        <li class="chapter active" data-level="1.2.18" data-path="qtextcodec.html">
             
                 <a href="qtextcodec.html">
             
@@ -833,7 +833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >QtCore</a>
+        <a href=".." >QTextCodec/QTextDecoder/QTextEncoder*</a>
     </h1>
 </div>
 
@@ -848,18 +848,107 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <!-- README.md --- 
+                                <!-- qtextcodec.md --- 
 ;; 
 ;; Description: 
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
-;; Created: 三 12月 13 19:50:53 2017 (+0800)
-;; Last-Updated: 三 12月 13 19:51:07 2017 (+0800)
+;; Created: 三 12月 13 21:00:17 2017 (+0800)
+;; Last-Updated: 三 12月 13 21:03:32 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
 ;; URL: http://wuhongyi.cn -->
-<h1 id="readme">README</h1>
-<!-- README.md ends here -->
+<h1 id="qtextcodec">qtextcodec</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// QTextCodec</span>
+
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QTextCodec* <span class="hljs-title">codecForName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QByteArray &amp;name)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QTextCodec* <span class="hljs-title">codecForName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name)</span> </span>{ <span class="hljs-keyword">return</span> codecForName(QByteArray(name)); }
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QTextCodec* <span class="hljs-title">codecForMib</span><span class="hljs-params">(<span class="hljs-keyword">int</span> mib)</span></span>;
+
+    <span class="hljs-keyword">static</span> QList&lt;QByteArray&gt; availableCodecs();
+    <span class="hljs-keyword">static</span> QList&lt;<span class="hljs-keyword">int</span>&gt; availableMibs();
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QTextCodec* <span class="hljs-title">codecForLocale</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setCodecForLocale</span><span class="hljs-params">(QTextCodec *c)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QTextCodec* <span class="hljs-title">codecForTr</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setCodecForTr</span><span class="hljs-params">(QTextCodec *c)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QTextCodec* <span class="hljs-title">codecForCStrings</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setCodecForCStrings</span><span class="hljs-params">(QTextCodec *c)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QTextCodec *<span class="hljs-title">codecForHtml</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QByteArray &amp;ba)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QTextCodec *<span class="hljs-title">codecForHtml</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QByteArray &amp;ba, QTextCodec *defaultCodec)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QTextCodec *<span class="hljs-title">codecForUtfText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QByteArray &amp;ba)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QTextCodec *<span class="hljs-title">codecForUtfText</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QByteArray &amp;ba, QTextCodec *defaultCodec)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">canEncode</span><span class="hljs-params">(QChar)</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">canEncode</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QString&amp;)</span> <span class="hljs-keyword">const</span></span>;
+
+    <span class="hljs-function">QString <span class="hljs-title">toUnicode</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QByteArray&amp;)</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function">QString <span class="hljs-title">toUnicode</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* chars)</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function">QByteArray <span class="hljs-title">fromUnicode</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QString&amp; uc)</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-keyword">enum</span> ConversionFlag {
+        DefaultConversion,
+        ConvertInvalidToNull = <span class="hljs-number">0x80000000</span>,
+        IgnoreHeader = <span class="hljs-number">0x1</span>,
+        FreeFunction = <span class="hljs-number">0x2</span>
+    };
+    Q_DECLARE_FLAGS(ConversionFlags, ConversionFlag)
+
+    <span class="hljs-keyword">struct</span> Q_CORE_EXPORT ConverterState {
+        ConverterState(ConversionFlags f = DefaultConversion)
+            : flags(f), remainingChars(<span class="hljs-number">0</span>), invalidChars(<span class="hljs-number">0</span>), d(<span class="hljs-number">0</span>) { state_data[<span class="hljs-number">0</span>] = state_data[<span class="hljs-number">1</span>] = state_data[<span class="hljs-number">2</span>] = <span class="hljs-number">0</span>; }
+        ~ConverterState();
+        ConversionFlags flags;
+        <span class="hljs-keyword">int</span> remainingChars;
+        <span class="hljs-keyword">int</span> invalidChars;
+        uint state_data[<span class="hljs-number">3</span>];
+        <span class="hljs-keyword">void</span> *d;
+    <span class="hljs-keyword">private</span>:
+        Q_DISABLE_COPY(ConverterState)
+    };
+
+    <span class="hljs-function">QString <span class="hljs-title">toUnicode</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *in, <span class="hljs-keyword">int</span> length, ConverterState *state = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span>
+        </span>{ <span class="hljs-keyword">return</span> convertToUnicode(in, length, state); }
+    <span class="hljs-function">QByteArray <span class="hljs-title">fromUnicode</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QChar *in, <span class="hljs-keyword">int</span> length, ConverterState *state = <span class="hljs-number">0</span>)</span> <span class="hljs-keyword">const</span>
+        </span>{ <span class="hljs-keyword">return</span> convertFromUnicode(in, length, state); }
+
+    <span class="hljs-comment">// ### Qt 5: merge these functions.</span>
+    <span class="hljs-function">QTextDecoder* <span class="hljs-title">makeDecoder</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function">QTextDecoder* <span class="hljs-title">makeDecoder</span><span class="hljs-params">(ConversionFlags flags)</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function">QTextEncoder* <span class="hljs-title">makeEncoder</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function">QTextEncoder* <span class="hljs-title">makeEncoder</span><span class="hljs-params">(ConversionFlags flags)</span> <span class="hljs-keyword">const</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> QByteArray <span class="hljs-title">name</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">virtual</span> QList&lt;QByteArray&gt; aliases() <span class="hljs-keyword">const</span>;
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">int</span> <span class="hljs-title">mibEnum</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>= <span class="hljs-number">0</span>;
+
+<span class="hljs-keyword">public</span>:
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> QT3_SUPPORT</span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QT3_SUPPORT QTextCodec* <span class="hljs-title">codecForContent</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>*, <span class="hljs-keyword">int</span>)</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; }
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QT3_SUPPORT <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* <span class="hljs-title">locale</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QT3_SUPPORT QTextCodec* <span class="hljs-title">codecForName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* hint, <span class="hljs-keyword">int</span>)</span> </span>{ <span class="hljs-keyword">return</span> codecForName(QByteArray(hint)); }
+    <span class="hljs-function">QT3_SUPPORT QByteArray <span class="hljs-title">fromUnicode</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QString&amp; uc, <span class="hljs-keyword">int</span>&amp; lenInOut)</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function">QT3_SUPPORT QString <span class="hljs-title">toUnicode</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QByteArray&amp;, <span class="hljs-keyword">int</span> len)</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function">QT3_SUPPORT QByteArray <span class="hljs-title">mimeName</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> name(); }
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QT3_SUPPORT QTextCodec *<span class="hljs-title">codecForIndex</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>{ <span class="hljs-keyword">return</span> codecForName(availableCodecs().value(i)); }
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
+<pre><code class="lang-cpp">// QTextDecoder
+
+public:
+    explicit QTextDecoder(const QTextCodec *codec) : c(codec), state() {}
+    QTextDecoder(const QTextCodec *codec, QTextCodec::ConversionFlags flags);
+    ~QTextDecoder();
+    QString toUnicode(const char* chars, int len);
+    QString toUnicode(const QByteArray &amp;ba);
+    void toUnicode(QString *target, const char *chars, int len);
+    bool hasFailure() const;
+</code></pre>
+<!-- qtextcodec.md ends here -->
 
                                 
                                 </section>
@@ -887,12 +976,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 简介">
+                <a href="qnamespace.md" class="navigation navigation-prev " aria-label="Previous page: Qt/QInternal">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="qlocale_blackberry.html" class="navigation navigation-next " aria-label="Next page: QBBSystemLocaleData">
+                <a href="qtextstream.md" class="navigation navigation-next " aria-label="Next page: QTextStream/QTextIStream/QTextOStream/QTextStreamFunction/QTextStreamManipulator">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -903,7 +992,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"QtCore","level":"1.2","depth":1,"next":{"title":"QBBSystemLocaleData","level":"1.2.1","depth":2,"path":"QtCore/qlocale_blackberry.md","ref":"QtCore/qlocale_blackberry.md","articles":[]},"previous":{"title":"简介","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtCore/README.md","mtime":"2017-12-13T11:51:07.943Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"QTextCodec/QTextDecoder/QTextEncoder*","level":"1.2.18","depth":2,"next":{"title":"QTextStream/QTextIStream/QTextOStream/QTextStreamFunction/QTextStreamManipulator","level":"1.2.19","depth":2,"path":"QtCore/qtextstream.md","ref":"QtCore/qtextstream.md","articles":[]},"previous":{"title":"Qt/QInternal","level":"1.2.17","depth":2,"path":"QtCore/qnamespace.md","ref":"QtCore/qnamespace.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtCore/qtextcodec.md","mtime":"2017-12-13T13:03:32.203Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

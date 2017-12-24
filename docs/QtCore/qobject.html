@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>QtCore · GitBook</title>
+        <title>QObject/QObjectData/QObjectList/QObjectUserData* · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="qlocale_blackberry.html" />
+    <link rel="next" href="qprocess.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="qlocale.html" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="./">
+        <li class="chapter " data-level="1.2" data-path="./">
             
                 <a href="./">
             
@@ -259,7 +259,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.12" data-path="qobject.html">
+        <li class="chapter active" data-level="1.2.12" data-path="qobject.html">
             
                 <a href="qobject.html">
             
@@ -833,7 +833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >QtCore</a>
+        <a href=".." >QObject/QObjectData/QObjectList/QObjectUserData*</a>
     </h1>
 </div>
 
@@ -848,18 +848,207 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <!-- README.md --- 
+                                <!-- qobject.md --- 
 ;; 
 ;; Description: 
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
-;; Created: 三 12月 13 19:50:53 2017 (+0800)
-;; Last-Updated: 三 12月 13 19:51:07 2017 (+0800)
+;; Created: 三 12月 13 20:41:12 2017 (+0800)
+;; Last-Updated: 三 12月 13 20:43:17 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
 ;; URL: http://wuhongyi.cn -->
-<h1 id="readme">README</h1>
-<!-- README.md ends here -->
+<h1 id="qobject">qobject</h1>
+<pre><code class="lang-cpp">// QObject
+
+
+public:
+    Q_INVOKABLE explicit QObject(QObject *parent=0);
+    virtual ~QObject();
+
+    virtual bool event(QEvent *);
+    virtual bool eventFilter(QObject *, QEvent *);
+
+#ifdef qdoc
+    static QString tr(const char *sourceText, const char *comment = 0, int n = -1);
+    static QString trUtf8(const char *sourceText, const char *comment = 0, int n = -1);
+    virtual const QMetaObject *metaObject() const;
+    static const QMetaObject staticMetaObject;
+#endif
+#ifdef QT_NO_TRANSLATION
+    static QString tr(const char *sourceText, const char *, int)
+        { return QString::fromLatin1(sourceText); }
+    static QString tr(const char *sourceText, const char * = 0)
+        { return QString::fromLatin1(sourceText); }
+#ifndef QT_NO_TEXTCODEC
+    static QString trUtf8(const char *sourceText, const char *, int)
+        { return QString::fromUtf8(sourceText); }
+    static QString trUtf8(const char *sourceText, const char * = 0)
+        { return QString::fromUtf8(sourceText); }
+#endif
+#endif //QT_NO_TRANSLATION
+
+    QString objectName() const;
+    void setObjectName(const QString &amp;name);
+
+    inline bool isWidgetType() const { return d_ptr-&gt;isWidget; }
+
+    inline bool signalsBlocked() const { return d_ptr-&gt;blockSig; }
+    bool blockSignals(bool b);
+
+    QThread *thread() const;
+    void moveToThread(QThread *thread);
+
+    int startTimer(int interval);
+    void killTimer(int id);
+
+    template&lt;typename T&gt;
+    inline T findChild(const QString &amp;aName = QString()) const
+    { return static_cast&lt;T&gt;(qt_qFindChild_helper(this, aName, reinterpret_cast&lt;T&gt;(0)-&gt;staticMetaObject)); }
+
+    template&lt;typename T&gt;
+    inline QList&lt;T&gt; findChildren(const QString &amp;aName = QString()) const
+    {
+        QList&lt;T&gt; list;
+        union {
+            QList&lt;T&gt; *typedList;
+            QList&lt;void *&gt; *voidList;
+        } u;
+        u.typedList = &amp;list;
+        qt_qFindChildren_helper(this, aName, 0, reinterpret_cast&lt;T&gt;(0)-&gt;staticMetaObject, u.voidList);
+        return list;
+    }
+
+#ifndef QT_NO_REGEXP
+    template&lt;typename T&gt;
+    inline QList&lt;T&gt; findChildren(const QRegExp &amp;re) const
+    {
+        QList&lt;T&gt; list;
+        union {
+            QList&lt;T&gt; *typedList;
+            QList&lt;void *&gt; *voidList;
+        } u;
+        u.typedList = &amp;list;
+        qt_qFindChildren_helper(this, QString(), &amp;re, reinterpret_cast&lt;T&gt;(0)-&gt;staticMetaObject, u.voidList);
+        return list;
+    }
+#endif
+
+#ifdef QT3_SUPPORT
+    QT3_SUPPORT QObject *child(const char *objName, const char *inheritsClass = 0,
+                   bool recursiveSearch = true) const;
+    QT3_SUPPORT QObjectList queryList(const char *inheritsClass = 0,
+                          const char *objName = 0,
+                          bool regexpMatch = true,
+                          bool recursiveSearch = true) const;
+#endif
+    inline const QObjectList &amp;children() const { return d_ptr-&gt;children; }
+
+    void setParent(QObject *);
+    void installEventFilter(QObject *);
+    void removeEventFilter(QObject *);
+
+
+    static bool connect(const QObject *sender, const char *signal,
+                        const QObject *receiver, const char *member, Qt::ConnectionType =
+#ifdef qdoc
+                        Qt::AutoConnection
+#else
+#ifdef QT3_SUPPORT
+                        Qt::AutoCompatConnection
+#else
+                        Qt::AutoConnection
+#endif
+#endif
+        );
+
+    static bool connect(const QObject *sender, const QMetaMethod &amp;signal,
+                        const QObject *receiver, const QMetaMethod &amp;method,
+                        Qt::ConnectionType type = 
+#ifdef qdoc
+                        Qt::AutoConnection
+#else
+#ifdef QT3_SUPPORT
+                        Qt::AutoCompatConnection
+#else
+                        Qt::AutoConnection
+#endif
+#endif
+        );
+
+    inline bool connect(const QObject *sender, const char *signal,
+                        const char *member, Qt::ConnectionType type =
+#ifdef qdoc
+                        Qt::AutoConnection
+#else
+#ifdef QT3_SUPPORT
+                        Qt::AutoCompatConnection
+#else
+                        Qt::AutoConnection
+#endif
+#endif
+        ) const;
+
+    static bool disconnect(const QObject *sender, const char *signal,
+                           const QObject *receiver, const char *member);
+    static bool disconnect(const QObject *sender, const QMetaMethod &amp;signal,
+                           const QObject *receiver, const QMetaMethod &amp;member);
+    inline bool disconnect(const char *signal = 0,
+                           const QObject *receiver = 0, const char *member = 0)
+        { return disconnect(this, signal, receiver, member); }
+    inline bool disconnect(const QObject *receiver, const char *member = 0)
+        { return disconnect(this, 0, receiver, member); }
+
+    void dumpObjectTree();
+    void dumpObjectInfo();
+
+#ifndef QT_NO_PROPERTIES
+    bool setProperty(const char *name, const QVariant &amp;value);
+    QVariant property(const char *name) const;
+    QList&lt;QByteArray&gt; dynamicPropertyNames() const;
+#endif // QT_NO_PROPERTIES
+
+#ifndef QT_NO_USERDATA
+    static uint registerUserData();
+    void setUserData(uint id, QObjectUserData* data);
+    QObjectUserData* userData(uint id) const;
+#endif // QT_NO_USERDATA
+
+Q_SIGNALS:
+    void destroyed(QObject * = 0);
+
+public:
+    inline QObject *parent() const { return d_ptr-&gt;parent; }
+
+    inline bool inherits(const char *classname) const
+        { return const_cast&lt;QObject *&gt;(this)-&gt;qt_metacast(classname) != 0; }
+
+public Q_SLOTS:
+    void deleteLater();
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-comment">// QObjectData</span>
+
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">virtual</span> ~QObjectData() = <span class="hljs-number">0</span>;
+    QObject *q_ptr;
+    QObject *parent;
+    QObjectList children;
+
+    uint isWidget : <span class="hljs-number">1</span>;
+    uint pendTimer : <span class="hljs-number">1</span>;
+    uint blockSig : <span class="hljs-number">1</span>;
+    uint wasDeleted : <span class="hljs-number">1</span>;
+    uint ownObjectName : <span class="hljs-number">1</span>;
+    uint sendChildEvents : <span class="hljs-number">1</span>;
+    uint receiveChildEvents : <span class="hljs-number">1</span>;
+    uint inEventHandler : <span class="hljs-number">1</span>; <span class="hljs-comment">//only used if QT_JAMBI_BUILD</span>
+    uint inThreadChangeEvent : <span class="hljs-number">1</span>;
+    uint hasGuards : <span class="hljs-number">1</span>; <span class="hljs-comment">//true iff there is one or more QPointer attached to this object</span>
+    uint unused : <span class="hljs-number">22</span>;
+    <span class="hljs-keyword">int</span> postedEvents;
+    QMetaObject *metaObject; <span class="hljs-comment">// assert dynamic</span>
+</code></pre>
+<!-- qobject.md ends here -->
 
                                 
                                 </section>
@@ -887,12 +1076,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 简介">
+                <a href="qlocale.html" class="navigation navigation-prev " aria-label="Previous page: QLocale*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="qlocale_blackberry.html" class="navigation navigation-next " aria-label="Next page: QBBSystemLocaleData">
+                <a href="qprocess.html" class="navigation navigation-next " aria-label="Next page: QProcess/QProcessEnvironment*">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -903,7 +1092,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"QtCore","level":"1.2","depth":1,"next":{"title":"QBBSystemLocaleData","level":"1.2.1","depth":2,"path":"QtCore/qlocale_blackberry.md","ref":"QtCore/qlocale_blackberry.md","articles":[]},"previous":{"title":"简介","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtCore/README.md","mtime":"2017-12-13T11:51:07.943Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"QObject/QObjectData/QObjectList/QObjectUserData*","level":"1.2.12","depth":2,"next":{"title":"QProcess/QProcessEnvironment*","level":"1.2.13","depth":2,"path":"QtCore/qprocess.md","ref":"QtCore/qprocess.md","articles":[]},"previous":{"title":"QLocale*","level":"1.2.11","depth":2,"path":"QtCore/qlocale.md","ref":"QtCore/qlocale.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtCore/qobject.md","mtime":"2017-12-13T12:43:17.746Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

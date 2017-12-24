@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>QtGui · GitBook</title>
+        <title>QInputDialog* · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="qabstractbutton.html" />
+    <link rel="next" href="qlabel.html" />
     
     
-    <link rel="prev" href="../QtCore/qvariant.md" />
+    <link rel="prev" href="qicon.md" />
     
 
     </head>
@@ -381,7 +381,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="./">
+        <li class="chapter " data-level="1.3" data-path="./">
             
                 <a href="./">
             
@@ -603,7 +603,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.17" data-path="qinputdialog.html">
+        <li class="chapter active" data-level="1.3.17" data-path="qinputdialog.html">
             
                 <a href="qinputdialog.html">
             
@@ -833,7 +833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >QtGui</a>
+        <a href=".." >QInputDialog*</a>
     </h1>
 </div>
 
@@ -848,18 +848,181 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <!-- README.md --- 
+                                <!-- qinputdialog.md --- 
 ;; 
 ;; Description: 
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
-;; Created: 三 12月 13 19:51:19 2017 (+0800)
-;; Last-Updated: 三 12月 13 19:51:27 2017 (+0800)
+;; Created: 日 12月 24 13:09:01 2017 (+0800)
+;; Last-Updated: 日 12月 24 13:10:28 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
 ;; URL: http://wuhongyi.cn -->
-<h1 id="readme">README</h1>
-<!-- README.md ends here -->
+<h1 id="qinputdialog">qinputdialog</h1>
+<pre><code class="lang-cpp">// QInputDialog : public QDialog
+
+
+public:
+    enum InputDialogOption {
+        NoButtons                   = 0x00000001,
+        UseListViewForComboBoxItems = 0x00000002
+    };
+
+    Q_DECLARE_FLAGS(InputDialogOptions, InputDialogOption)
+
+    enum InputMode {
+        TextInput,
+        IntInput,
+        DoubleInput
+    };
+
+    QInputDialog(QWidget *parent = 0, Qt::WindowFlags flags = 0);
+    ~QInputDialog();
+
+    void setInputMode(InputMode mode);
+    InputMode inputMode() const;
+
+    void setLabelText(const QString &amp;text);
+    QString labelText() const;
+
+    void setOption(InputDialogOption option, bool on = true);
+    bool testOption(InputDialogOption option) const;
+    void setOptions(InputDialogOptions options);
+    InputDialogOptions options() const;
+
+    void setTextValue(const QString &amp;text);
+    QString textValue() const;
+
+    void setTextEchoMode(QLineEdit::EchoMode mode);
+    QLineEdit::EchoMode textEchoMode() const;
+
+    void setComboBoxEditable(bool editable);
+    bool isComboBoxEditable() const;
+
+    void setComboBoxItems(const QStringList &amp;items);
+    QStringList comboBoxItems() const;
+
+    void setIntValue(int value);
+    int intValue() const;
+
+    void setIntMinimum(int min);
+    int intMinimum() const;
+
+    void setIntMaximum(int max);
+    int intMaximum() const;
+
+    void setIntRange(int min, int max);
+
+    void setIntStep(int step);
+    int intStep() const;
+
+    void setDoubleValue(double value);
+    double doubleValue() const;
+
+    void setDoubleMinimum(double min);
+    double doubleMinimum() const;
+
+    void setDoubleMaximum(double max);
+    double doubleMaximum() const;
+
+    void setDoubleRange(double min, double max);
+
+    void setDoubleDecimals(int decimals);
+    int doubleDecimals() const;
+
+    void setOkButtonText(const QString &amp;text);
+    QString okButtonText() const;
+
+    void setCancelButtonText(const QString &amp;text);
+    QString cancelButtonText() const;
+
+#ifdef Q_NO_USING_KEYWORD
+#ifndef Q_QDOC
+    void open() { QDialog::open(); }
+#endif
+#else
+    using QDialog::open;
+#endif
+    void open(QObject *receiver, const char *member);
+
+    QSize minimumSizeHint() const;
+    QSize sizeHint() const;
+
+    void setVisible(bool visible);
+
+#ifdef Q_QDOC
+    static QString getText(QWidget *parent, const QString &amp;title, const QString &amp;label,
+                           QLineEdit::EchoMode echo = QLineEdit::Normal,
+                           const QString &amp;text = QString(), bool *ok = 0, Qt::WindowFlags flags = 0,
+                           Qt::InputMethodHints inputMethodHints = Qt::ImhNone);
+    static QString getItem(QWidget *parent, const QString &amp;title, const QString &amp;label,
+                           const QStringList &amp;items, int current = 0, bool editable = true,
+                           bool *ok = 0, Qt::WindowFlags flags = 0,
+                           Qt::InputMethodHints inputMethodHints = Qt::ImhNone);
+#else
+    static QString getText(QWidget *parent, const QString &amp;title, const QString &amp;label,
+                           QLineEdit::EchoMode echo = QLineEdit::Normal,
+                           const QString &amp;text = QString(), bool *ok = 0, Qt::WindowFlags flags = 0);
+    static QString getItem(QWidget *parent, const QString &amp;title, const QString &amp;label,
+                           const QStringList &amp;items, int current = 0, bool editable = true,
+                           bool *ok = 0, Qt::WindowFlags flags = 0);
+    static QString getText(QWidget *parent, const QString &amp;title, const QString &amp;label,
+                           QLineEdit::EchoMode echo,
+                           const QString &amp;text, bool *ok, Qt::WindowFlags flags,
+                           Qt::InputMethodHints inputMethodHints);
+    static QString getItem(QWidget *parent, const QString &amp;title, const QString &amp;label,
+                           const QStringList &amp;items, int current, bool editable,
+                           bool *ok, Qt::WindowFlags flags,
+                           Qt::InputMethodHints inputMethodHints);
+#endif
+    static int getInt(QWidget *parent, const QString &amp;title, const QString &amp;label, int value = 0,
+                      int minValue = -2147483647, int maxValue = 2147483647,
+                      int step = 1, bool *ok = 0, Qt::WindowFlags flags = 0);
+    static double getDouble(QWidget *parent, const QString &amp;title, const QString &amp;label, double value = 0,
+                            double minValue = -2147483647, double maxValue = 2147483647,
+                            int decimals = 1, bool *ok = 0, Qt::WindowFlags flags = 0);
+
+    // obsolete
+    static int getInteger(QWidget *parent, const QString &amp;title, const QString &amp;label, int value = 0,
+                          int minValue = -2147483647, int maxValue = 2147483647,
+                          int step = 1, bool *ok = 0, Qt::WindowFlags flags = 0);
+
+#ifdef QT3_SUPPORT
+    inline static QT3_SUPPORT QString getText(const QString &amp;title, const QString &amp;label,
+                                              QLineEdit::EchoMode echo = QLineEdit::Normal,
+                                              const QString &amp;text = QString(), bool *ok = 0,
+                                              QWidget *parent = 0, const char * = 0, Qt::WindowFlags flags = 0)
+        { return getText(parent, title, label, echo, text, ok, flags); }
+    inline static QT3_SUPPORT int getInteger(const QString &amp;title, const QString &amp;label, int value = 0,
+                                             int minValue = -2147483647, int maxValue = 2147483647,
+                                             int step = 1, bool *ok = 0,
+                                             QWidget *parent = 0, const char * = 0, Qt::WindowFlags flags = 0)
+        { return getInteger(parent, title, label, value, minValue, maxValue, step, ok, flags); }
+    inline static QT3_SUPPORT double getDouble(const QString &amp;title, const QString &amp;label, double value = 0,
+                                               double minValue = -2147483647, double maxValue = 2147483647,
+                                               int decimals = 1, bool *ok = 0,
+                                               QWidget *parent = 0, const char * = 0, Qt::WindowFlags flags = 0)
+        { return getDouble(parent, title, label, value, minValue, maxValue, decimals, ok, flags); }
+    inline static QT3_SUPPORT QString getItem(const QString &amp;title, const QString &amp;label, const QStringList &amp;list,
+                                              int current = 0, bool editable = true, bool *ok = 0,
+                                              QWidget *parent = 0, const char * = 0, Qt::WindowFlags flags = 0)
+        { return getItem(parent, title, label, list, current, editable, ok, flags); }
+#endif
+
+Q_SIGNALS:
+    // ### emit signals!
+    void textValueChanged(const QString &amp;text);
+    void textValueSelected(const QString &amp;text);
+    void intValueChanged(int value);
+    void intValueSelected(int value);
+    void doubleValueChanged(double value);
+    void doubleValueSelected(double value);
+
+
+public:
+    void done(int result); // ### Qt 5: Make protected.
+</code></pre>
+<!-- qinputdialog.md ends here -->
 
                                 
                                 </section>
@@ -887,12 +1050,12 @@
 
             
                 
-                <a href="../QtCore/qvariant.md" class="navigation navigation-prev " aria-label="Previous page: QVariant">
+                <a href="qicon.md" class="navigation navigation-prev " aria-label="Previous page: QIcon">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="qabstractbutton.html" class="navigation navigation-next " aria-label="Next page: QAbstractButton*">
+                <a href="qlabel.html" class="navigation navigation-next " aria-label="Next page: QLabel*">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -903,7 +1066,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"QtGui","level":"1.3","depth":1,"next":{"title":"QAbstractButton*","level":"1.3.1","depth":2,"path":"QtGui/qabstractbutton.md","ref":"QtGui/qabstractbutton.md","articles":[]},"previous":{"title":"QVariant","level":"1.2.20","depth":2,"path":"QtCore/qvariant.md","ref":"QtCore/qvariant.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtGui/README.md","mtime":"2017-12-13T11:51:28.049Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"QInputDialog*","level":"1.3.17","depth":2,"next":{"title":"QLabel*","level":"1.3.18","depth":2,"path":"QtGui/qlabel.md","ref":"QtGui/qlabel.md","articles":[]},"previous":{"title":"QIcon","level":"1.3.16","depth":2,"path":"QtGui/qicon.md","ref":"QtGui/qicon.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtGui/qinputdialog.md","mtime":"2017-12-24T05:10:28.130Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

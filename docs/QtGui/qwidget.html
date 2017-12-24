@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>QtGui · GitBook</title>
+        <title>QWidget/QWidgetData* · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="qabstractbutton.html" />
     
-    
-    <link rel="prev" href="../QtCore/qvariant.md" />
+    <link rel="prev" href="qtablewidget.md" />
     
 
     </head>
@@ -381,7 +379,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="./">
+        <li class="chapter " data-level="1.3" data-path="./">
             
                 <a href="./">
             
@@ -785,7 +783,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.31" data-path="qwidget.html">
+        <li class="chapter active" data-level="1.3.31" data-path="qwidget.html">
             
                 <a href="qwidget.html">
             
@@ -833,7 +831,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >QtGui</a>
+        <a href=".." >QWidget/QWidgetData*</a>
     </h1>
 </div>
 
@@ -848,18 +846,479 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <!-- README.md --- 
+                                <!-- qwidget.md --- 
 ;; 
 ;; Description: 
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
-;; Created: 三 12月 13 19:51:19 2017 (+0800)
-;; Last-Updated: 三 12月 13 19:51:27 2017 (+0800)
+;; Created: 三 12月 13 20:20:37 2017 (+0800)
+;; Last-Updated: 三 12月 13 20:36:58 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 1
+;;     Update #: 2
 ;; URL: http://wuhongyi.cn -->
-<h1 id="readme">README</h1>
-<!-- README.md ends here -->
+<h1 id="qwidget">qwidget</h1>
+<pre><code class="lang-cpp">// QWidget : public QObject, public QPaintDevice
+
+public:
+    enum RenderFlag {
+        DrawWindowBackground = 0x1,
+        DrawChildren = 0x2,
+        IgnoreMask = 0x4
+    };
+    Q_DECLARE_FLAGS(RenderFlags, RenderFlag)
+
+    explicit QWidget(QWidget* parent = 0, Qt::WindowFlags f = 0);
+#ifdef QT3_SUPPORT
+    QT3_SUPPORT_CONSTRUCTOR QWidget(QWidget* parent, const char *name, Qt::WindowFlags f = 0);
+#endif
+    ~QWidget();
+
+    int devType() const;
+
+    WId winId() const;
+    void createWinId(); // internal, going away
+    inline WId internalWinId() const { return data-&gt;winid; }
+    WId effectiveWinId() const;
+
+    // GUI style setting
+    QStyle *style() const;
+    void setStyle(QStyle *);
+    // Widget types and states
+
+    bool isTopLevel() const;
+    bool isWindow() const;
+
+    bool isModal() const;
+    Qt::WindowModality windowModality() const;
+    void setWindowModality(Qt::WindowModality windowModality);
+
+    bool isEnabled() const;
+    bool isEnabledTo(QWidget*) const;
+    bool isEnabledToTLW() const;
+
+public Q_SLOTS:
+    void setEnabled(bool);
+    void setDisabled(bool);
+    void setWindowModified(bool);
+
+    // Widget coordinates
+
+public:
+    QRect frameGeometry() const;
+    const QRect &amp;geometry() const;
+    QRect normalGeometry() const;
+
+    int x() const;
+    int y() const;
+    QPoint pos() const;
+    QSize frameSize() const;
+    QSize size() const;
+    inline int width() const;
+    inline int height() const;
+    inline QRect rect() const;
+    QRect childrenRect() const;
+    QRegion childrenRegion() const;
+
+    QSize minimumSize() const;
+    QSize maximumSize() const;
+    int minimumWidth() const;
+    int minimumHeight() const;
+    int maximumWidth() const;
+    int maximumHeight() const;
+    void setMinimumSize(const QSize &amp;);
+    void setMinimumSize(int minw, int minh);
+    void setMaximumSize(const QSize &amp;);
+    void setMaximumSize(int maxw, int maxh);
+    void setMinimumWidth(int minw);
+    void setMinimumHeight(int minh);
+    void setMaximumWidth(int maxw);
+    void setMaximumHeight(int maxh);
+
+#ifdef Q_QDOC
+    void setupUi(QWidget *widget);
+#endif
+
+    QSize sizeIncrement() const;
+    void setSizeIncrement(const QSize &amp;);
+    void setSizeIncrement(int w, int h);
+    QSize baseSize() const;
+    void setBaseSize(const QSize &amp;);
+    void setBaseSize(int basew, int baseh);
+
+    void setFixedSize(const QSize &amp;);
+    void setFixedSize(int w, int h);
+    void setFixedWidth(int w);
+    void setFixedHeight(int h);
+
+    // Widget coordinate mapping
+
+    QPoint mapToGlobal(const QPoint &amp;) const;
+    QPoint mapFromGlobal(const QPoint &amp;) const;
+    QPoint mapToParent(const QPoint &amp;) const;
+    QPoint mapFromParent(const QPoint &amp;) const;
+    QPoint mapTo(QWidget *, const QPoint &amp;) const;
+    QPoint mapFrom(QWidget *, const QPoint &amp;) const;
+
+    QWidget *window() const;
+    QWidget *nativeParentWidget() const;
+    inline QWidget *topLevelWidget() const { return window(); }
+
+    // Widget appearance functions
+    const QPalette &amp;palette() const;
+    void setPalette(const QPalette &amp;);
+
+    void setBackgroundRole(QPalette::ColorRole);
+    QPalette::ColorRole backgroundRole() const;
+
+    void setForegroundRole(QPalette::ColorRole);
+    QPalette::ColorRole foregroundRole() const;
+
+    const QFont &amp;font() const;
+    void setFont(const QFont &amp;);
+    QFontMetrics fontMetrics() const;
+    QFontInfo fontInfo() const;
+
+#ifndef QT_NO_CURSOR
+    QCursor cursor() const;
+    void setCursor(const QCursor &amp;);
+    void unsetCursor();
+#endif
+
+    void setMouseTracking(bool enable);
+    bool hasMouseTracking() const;
+    bool underMouse() const;
+
+    void setMask(const QBitmap &amp;);
+    void setMask(const QRegion &amp;);
+    QRegion mask() const;
+    void clearMask();
+
+    void render(QPaintDevice *target, const QPoint &amp;targetOffset = QPoint(),
+                const QRegion &amp;sourceRegion = QRegion(),
+                RenderFlags renderFlags = RenderFlags(DrawWindowBackground | DrawChildren));
+
+    void render(QPainter *painter, const QPoint &amp;targetOffset = QPoint(),
+                const QRegion &amp;sourceRegion = QRegion(),
+                RenderFlags renderFlags = RenderFlags(DrawWindowBackground | DrawChildren));
+
+#ifndef QT_NO_GRAPHICSEFFECT
+    QGraphicsEffect *graphicsEffect() const;
+    void setGraphicsEffect(QGraphicsEffect *effect);
+#endif //QT_NO_GRAPHICSEFFECT
+
+#ifndef QT_NO_GESTURES
+    void grabGesture(Qt::GestureType type, Qt::GestureFlags flags = Qt::GestureFlags());
+    void ungrabGesture(Qt::GestureType type);
+#endif
+
+public Q_SLOTS:
+    void setWindowTitle(const QString &amp;);
+#ifndef QT_NO_STYLE_STYLESHEET
+    void setStyleSheet(const QString&amp; styleSheet);
+#endif
+public:
+#ifndef QT_NO_STYLE_STYLESHEET
+    QString styleSheet() const;
+#endif
+    QString windowTitle() const;
+    void setWindowIcon(const QIcon &amp;icon);
+    QIcon windowIcon() const;
+    void setWindowIconText(const QString &amp;);
+    QString windowIconText() const;
+    void setWindowRole(const QString &amp;);
+    QString windowRole() const;
+    void setWindowFilePath(const QString &amp;filePath);
+    QString windowFilePath() const;
+
+    void setWindowOpacity(qreal level);
+    qreal windowOpacity() const;
+
+    bool isWindowModified() const;
+#ifndef QT_NO_TOOLTIP
+    void setToolTip(const QString &amp;);
+    QString toolTip() const;
+#endif
+#ifndef QT_NO_STATUSTIP
+    void setStatusTip(const QString &amp;);
+    QString statusTip() const;
+#endif
+#ifndef QT_NO_WHATSTHIS
+    void setWhatsThis(const QString &amp;);
+    QString whatsThis() const;
+#endif
+#ifndef QT_NO_ACCESSIBILITY
+    QString accessibleName() const;
+    void setAccessibleName(const QString &amp;name);
+    QString accessibleDescription() const;
+    void setAccessibleDescription(const QString &amp;description);
+#endif
+
+    void setLayoutDirection(Qt::LayoutDirection direction);
+    Qt::LayoutDirection layoutDirection() const;
+    void unsetLayoutDirection();
+
+    void setLocale(const QLocale &amp;locale);
+    QLocale locale() const;
+    void unsetLocale();
+
+    inline bool isRightToLeft() const { return layoutDirection() == Qt::RightToLeft; }
+    inline bool isLeftToRight() const { return layoutDirection() == Qt::LeftToRight; }
+
+public Q_SLOTS:
+    inline void setFocus() { setFocus(Qt::OtherFocusReason); }
+
+public:
+    bool isActiveWindow() const;
+    void activateWindow();
+    void clearFocus();
+
+    void setFocus(Qt::FocusReason reason);
+    Qt::FocusPolicy focusPolicy() const;
+    void setFocusPolicy(Qt::FocusPolicy policy);
+    bool hasFocus() const;
+    static void setTabOrder(QWidget *, QWidget *);
+    void setFocusProxy(QWidget *);
+    QWidget *focusProxy() const;
+    Qt::ContextMenuPolicy contextMenuPolicy() const;
+    void setContextMenuPolicy(Qt::ContextMenuPolicy policy);
+
+    // Grab functions
+    void grabMouse();
+#ifndef QT_NO_CURSOR
+    void grabMouse(const QCursor &amp;);
+#endif
+    void releaseMouse();
+    void grabKeyboard();
+    void releaseKeyboard();
+#ifndef QT_NO_SHORTCUT
+    int grabShortcut(const QKeySequence &amp;key, Qt::ShortcutContext context = Qt::WindowShortcut);
+    void releaseShortcut(int id);
+    void setShortcutEnabled(int id, bool enable = true);
+    void setShortcutAutoRepeat(int id, bool enable = true);
+#endif
+    static QWidget *mouseGrabber();
+    static QWidget *keyboardGrabber();
+
+    // Update/refresh functions
+    inline bool updatesEnabled() const;
+    void setUpdatesEnabled(bool enable);
+
+#if 0 //def Q_WS_QWS
+    void repaintUnclipped(const QRegion &amp;, bool erase = true);
+#endif
+
+#ifndef QT_NO_GRAPHICSVIEW
+    QGraphicsProxyWidget *graphicsProxyWidget() const;
+#endif
+
+public Q_SLOTS:
+    void update();
+    void repaint();
+
+public:
+    inline void update(int x, int y, int w, int h);
+    void update(const QRect&amp;);
+    void update(const QRegion&amp;);
+
+    void repaint(int x, int y, int w, int h);
+    void repaint(const QRect &amp;);
+    void repaint(const QRegion &amp;);
+
+public Q_SLOTS:
+    // Widget management functions
+
+    virtual void setVisible(bool visible);
+    inline void setHidden(bool hidden) { setVisible(!hidden); }
+#ifndef Q_WS_WINCE
+    inline void show() { setVisible(true); }
+#else
+    void show();
+#endif
+    inline void hide() { setVisible(false); }
+    inline QT_MOC_COMPAT void setShown(bool shown) { setVisible(shown); }
+
+    void showMinimized();
+    void showMaximized();
+    void showFullScreen();
+    void showNormal();
+
+    bool close();
+    void raise();
+    void lower();
+
+public:
+    void stackUnder(QWidget*);
+    void move(int x, int y);
+    void move(const QPoint &amp;);
+    void resize(int w, int h);
+    void resize(const QSize &amp;);
+    inline void setGeometry(int x, int y, int w, int h);
+    void setGeometry(const QRect &amp;);
+    QByteArray saveGeometry() const;
+    bool restoreGeometry(const QByteArray &amp;geometry);
+    void adjustSize();
+    bool isVisible() const;
+    bool isVisibleTo(QWidget*) const;
+    // ### Qt 5: bool isVisibleTo(_const_ QWidget *) const
+    inline bool isHidden() const;
+
+    bool isMinimized() const;
+    bool isMaximized() const;
+    bool isFullScreen() const;
+
+    Qt::WindowStates windowState() const;
+    void setWindowState(Qt::WindowStates state);
+    void overrideWindowState(Qt::WindowStates state);
+
+    virtual QSize sizeHint() const;
+    virtual QSize minimumSizeHint() const;
+
+    QSizePolicy sizePolicy() const;
+    void setSizePolicy(QSizePolicy);
+    inline void setSizePolicy(QSizePolicy::Policy horizontal, QSizePolicy::Policy vertical);
+    virtual int heightForWidth(int) const;
+
+    QRegion visibleRegion() const;
+
+    void setContentsMargins(int left, int top, int right, int bottom);
+    void setContentsMargins(const QMargins &amp;margins);
+    void getContentsMargins(int *left, int *top, int *right, int *bottom) const;
+    QMargins contentsMargins() const;
+
+    QRect contentsRect() const;
+
+public:
+    QLayout *layout() const;
+    void setLayout(QLayout *);
+    void updateGeometry();
+
+    void setParent(QWidget *parent);
+    void setParent(QWidget *parent, Qt::WindowFlags f);
+
+    void scroll(int dx, int dy);
+    void scroll(int dx, int dy, const QRect&amp;);
+
+    // Misc. functions
+
+    QWidget *focusWidget() const;
+    QWidget *nextInFocusChain() const;
+    QWidget *previousInFocusChain() const;
+
+    // drag and drop
+    bool acceptDrops() const;
+    void setAcceptDrops(bool on);
+
+#ifndef QT_NO_ACTION
+    //actions
+    void addAction(QAction *action);
+    void addActions(QList&lt;QAction*&gt; actions);
+    void insertAction(QAction *before, QAction *action);
+    void insertActions(QAction *before, QList&lt;QAction*&gt; actions);
+    void removeAction(QAction *action);
+    QList&lt;QAction*&gt; actions() const;
+#endif
+
+    QWidget *parentWidget() const;
+
+    void setWindowFlags(Qt::WindowFlags type);
+    inline Qt::WindowFlags windowFlags() const;
+    void overrideWindowFlags(Qt::WindowFlags type);
+
+    inline Qt::WindowType windowType() const;
+
+    static QWidget *find(WId);
+#ifdef QT3_SUPPORT
+    static QT3_SUPPORT QWidgetMapper *wmapper();
+#endif
+    inline QWidget *childAt(int x, int y) const;
+    QWidget *childAt(const QPoint &amp;p) const;
+
+#if defined(Q_WS_X11)
+    const QX11Info &amp;x11Info() const;
+    Qt::HANDLE x11PictureHandle() const;
+#endif
+
+#if defined(Q_WS_MAC)
+    Qt::HANDLE macQDHandle() const;
+    Qt::HANDLE macCGHandle() const;
+#endif
+
+#if defined(Q_WS_WIN)
+    HDC getDC() const;
+    void releaseDC(HDC) const;
+#else
+    Qt::HANDLE handle() const;
+#endif
+
+    void setAttribute(Qt::WidgetAttribute, bool on = true);
+    inline bool testAttribute(Qt::WidgetAttribute) const;
+
+    QPaintEngine *paintEngine() const;
+
+    void ensurePolished() const;
+#ifndef QT_NO_IM
+    QInputContext *inputContext();
+    void setInputContext(QInputContext *);
+#endif
+    bool isAncestorOf(const QWidget *child) const;
+
+#ifdef QT_KEYPAD_NAVIGATION
+    bool hasEditFocus() const;
+    void setEditFocus(bool on);
+#endif
+
+    bool autoFillBackground() const;
+    void setAutoFillBackground(bool enabled);
+
+    void setWindowSurface(QWindowSurface *surface);
+    QWindowSurface *windowSurface() const;
+
+#if defined(Q_WS_QPA)
+    void setPlatformWindow(QPlatformWindow *window);
+    QPlatformWindow *platformWindow() const;
+
+    void setPlatformWindowFormat(const QPlatformWindowFormat &amp;format);
+    QPlatformWindowFormat platformWindowFormat() const;
+
+    friend class QDesktopScreenWidget;
+#endif
+
+Q_SIGNALS:
+    void customContextMenuRequested(const QPoint &amp;pos);
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-comment">// QWidgetData</span>
+
+<span class="hljs-keyword">public</span>:
+    WId winid;
+    uint widget_attributes;
+    Qt::WindowFlags window_flags;
+    uint window_state : <span class="hljs-number">4</span>;
+    uint focus_policy : <span class="hljs-number">4</span>;
+    uint sizehint_forced :<span class="hljs-number">1</span>;
+    uint is_closing :<span class="hljs-number">1</span>;
+    uint in_show : <span class="hljs-number">1</span>;
+    uint in_set_window_state : <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">mutable</span> uint fstrut_dirty : <span class="hljs-number">1</span>;
+    uint context_menu_policy : <span class="hljs-number">3</span>;
+    uint window_modality : <span class="hljs-number">2</span>;
+    uint in_destructor : <span class="hljs-number">1</span>;
+    uint unused : <span class="hljs-number">13</span>;
+    QRect crect;
+    <span class="hljs-keyword">mutable</span> QPalette pal;
+    QFont fnt;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> defined(Q_WS_QWS)</span>
+<span class="hljs-comment">//    QRegion req_region;                 // Requested region</span>
+<span class="hljs-comment">//     mutable QRegion paintable_region;   // Paintable region</span>
+<span class="hljs-comment">//     mutable bool paintable_region_dirty;// needs to be recalculated</span>
+<span class="hljs-comment">//     mutable QRegion alloc_region;       // Allocated region</span>
+<span class="hljs-comment">//     mutable bool alloc_region_dirty;    // needs to be recalculated</span>
+<span class="hljs-comment">//     mutable int overlapping_children;   // Handle overlapping children</span>
+
+    <span class="hljs-keyword">int</span> alloc_region_index;
+<span class="hljs-comment">//    int alloc_region_revision;</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
+<!-- qwidget.md ends here -->
 
                                 
                                 </section>
@@ -887,14 +1346,10 @@
 
             
                 
-                <a href="../QtCore/qvariant.md" class="navigation navigation-prev " aria-label="Previous page: QVariant">
+                <a href="qtablewidget.md" class="navigation navigation-prev navigation-unique" aria-label="Previous page: QTableWidget/QTableWidgetItem/QTableWidgetSelectionRange">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="qabstractbutton.html" class="navigation navigation-next " aria-label="Next page: QAbstractButton*">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -903,7 +1358,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"QtGui","level":"1.3","depth":1,"next":{"title":"QAbstractButton*","level":"1.3.1","depth":2,"path":"QtGui/qabstractbutton.md","ref":"QtGui/qabstractbutton.md","articles":[]},"previous":{"title":"QVariant","level":"1.2.20","depth":2,"path":"QtCore/qvariant.md","ref":"QtCore/qvariant.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtGui/README.md","mtime":"2017-12-13T11:51:28.049Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"QWidget/QWidgetData*","level":"1.3.31","depth":2,"previous":{"title":"QTableWidget/QTableWidgetItem/QTableWidgetSelectionRange","level":"1.3.30","depth":2,"path":"QtGui/qtablewidget.md","ref":"QtGui/qtablewidget.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtGui/qwidget.md","mtime":"2017-12-13T12:36:59.080Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

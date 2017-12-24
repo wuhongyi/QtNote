@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>QtGui · GitBook</title>
+        <title>QBoxLayout/QHBoxLayout/QVBoxLayout* · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="qabstractbutton.html" />
+    <link rel="next" href="qcheckbox.md" />
     
     
-    <link rel="prev" href="../QtCore/qvariant.md" />
+    <link rel="prev" href="qapplication.html" />
     
 
     </head>
@@ -381,7 +381,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="./">
+        <li class="chapter " data-level="1.3" data-path="./">
             
                 <a href="./">
             
@@ -447,7 +447,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="qboxlayout.html">
+        <li class="chapter active" data-level="1.3.5" data-path="qboxlayout.html">
             
                 <a href="qboxlayout.html">
             
@@ -833,7 +833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >QtGui</a>
+        <a href=".." >QBoxLayout/QHBoxLayout/QVBoxLayout*</a>
     </h1>
 </div>
 
@@ -848,18 +848,108 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <!-- README.md --- 
+                                <!-- qboxlayout.md --- 
 ;; 
 ;; Description: 
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
-;; Created: 三 12月 13 19:51:19 2017 (+0800)
-;; Last-Updated: 三 12月 13 19:51:27 2017 (+0800)
+;; Created: 日 12月 24 10:42:49 2017 (+0800)
+;; Last-Updated: 日 12月 24 10:45:19 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
 ;; URL: http://wuhongyi.cn -->
-<h1 id="readme">README</h1>
-<!-- README.md ends here -->
+<h1 id="qboxlayout">qboxlayout</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// QBoxLayout : public QLayout</span>
+
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">enum</span> Direction { LeftToRight, RightToLeft, TopToBottom, BottomToTop,
+                     Down = TopToBottom, Up = BottomToTop };
+
+    <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">QBoxLayout</span><span class="hljs-params">(Direction, QWidget *parent = <span class="hljs-number">0</span>)</span></span>;
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> QT3_SUPPORT</span>
+    <span class="hljs-function">QT3_SUPPORT_CONSTRUCTOR <span class="hljs-title">QBoxLayout</span><span class="hljs-params">(QWidget *parent, Direction, <span class="hljs-keyword">int</span> border = <span class="hljs-number">0</span>, <span class="hljs-keyword">int</span> spacing = <span class="hljs-number">-1</span>,
+                <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name = <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-function">QT3_SUPPORT_CONSTRUCTOR  <span class="hljs-title">QBoxLayout</span><span class="hljs-params">(QLayout *parentLayout, Direction, <span class="hljs-keyword">int</span> spacing = <span class="hljs-number">-1</span>,
+                <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name = <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-function">QT3_SUPPORT_CONSTRUCTOR  <span class="hljs-title">QBoxLayout</span><span class="hljs-params">(Direction, <span class="hljs-keyword">int</span> spacing, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+    ~QBoxLayout();
+
+    <span class="hljs-function">Direction <span class="hljs-title">direction</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setDirection</span><span class="hljs-params">(Direction)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addSpacing</span><span class="hljs-params">(<span class="hljs-keyword">int</span> size)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addStretch</span><span class="hljs-params">(<span class="hljs-keyword">int</span> stretch = <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addSpacerItem</span><span class="hljs-params">(QSpacerItem *spacerItem)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addWidget</span><span class="hljs-params">(QWidget *, <span class="hljs-keyword">int</span> stretch = <span class="hljs-number">0</span>, Qt::Alignment alignment = <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addLayout</span><span class="hljs-params">(QLayout *layout, <span class="hljs-keyword">int</span> stretch = <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addStrut</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addItem</span><span class="hljs-params">(QLayoutItem *)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insertSpacing</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index, <span class="hljs-keyword">int</span> size)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insertStretch</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index, <span class="hljs-keyword">int</span> stretch = <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insertSpacerItem</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index, QSpacerItem *spacerItem)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insertWidget</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index, QWidget *widget, <span class="hljs-keyword">int</span> stretch = <span class="hljs-number">0</span>, Qt::Alignment alignment = <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insertLayout</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index, QLayout *layout, <span class="hljs-keyword">int</span> stretch = <span class="hljs-number">0</span>)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">spacing</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setSpacing</span><span class="hljs-params">(<span class="hljs-keyword">int</span> spacing)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">setStretchFactor</span><span class="hljs-params">(QWidget *w, <span class="hljs-keyword">int</span> stretch)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">setStretchFactor</span><span class="hljs-params">(QLayout *l, <span class="hljs-keyword">int</span> stretch)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setStretch</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index, <span class="hljs-keyword">int</span> stretch)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">stretch</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index)</span> <span class="hljs-keyword">const</span></span>;
+
+    <span class="hljs-function">QSize <span class="hljs-title">sizeHint</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function">QSize <span class="hljs-title">minimumSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function">QSize <span class="hljs-title">maximumSize</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">hasHeightForWidth</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">heightForWidth</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">minimumHeightForWidth</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span> <span class="hljs-keyword">const</span></span>;
+
+    Qt::<span class="hljs-function">Orientations <span class="hljs-title">expandingDirections</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">invalidate</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function">QLayoutItem *<span class="hljs-title">itemAt</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function">QLayoutItem *<span class="hljs-title">takeAt</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">count</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setGeometry</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QRect&amp;)</span></span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> QT3_SUPPORT</span>
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> QT3_SUPPORT <span class="hljs-keyword">int</span> <span class="hljs-title">findWidget</span><span class="hljs-params">(QWidget* w)</span> </span>{<span class="hljs-keyword">return</span> indexOf(w);}
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-comment">// QHBoxLayout : public QBoxLayout</span>
+
+<span class="hljs-keyword">public</span>:
+    QHBoxLayout();
+    <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">QHBoxLayout</span><span class="hljs-params">(QWidget *parent)</span></span>;
+    ~QHBoxLayout();
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> QT3_SUPPORT</span>
+    <span class="hljs-function">QT3_SUPPORT_CONSTRUCTOR <span class="hljs-title">QHBoxLayout</span><span class="hljs-params">(QWidget *parent, <span class="hljs-keyword">int</span> border,
+                 <span class="hljs-keyword">int</span> spacing = <span class="hljs-number">-1</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name = <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-function">QT3_SUPPORT_CONSTRUCTOR <span class="hljs-title">QHBoxLayout</span><span class="hljs-params">(QLayout *parentLayout,
+                 <span class="hljs-keyword">int</span> spacing = <span class="hljs-number">-1</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name = <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-function">QT3_SUPPORT_CONSTRUCTOR <span class="hljs-title">QHBoxLayout</span><span class="hljs-params">(<span class="hljs-keyword">int</span> spacing, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
+<pre><code class="lang-cpp"><span class="hljs-comment">// QVBoxLayout : public QBoxLayout</span>
+
+<span class="hljs-keyword">public</span>:
+    QVBoxLayout();
+    <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">QVBoxLayout</span><span class="hljs-params">(QWidget *parent)</span></span>;
+    ~QVBoxLayout();
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> QT3_SUPPORT</span>
+    <span class="hljs-function">QT3_SUPPORT_CONSTRUCTOR <span class="hljs-title">QVBoxLayout</span><span class="hljs-params">(QWidget *parent, <span class="hljs-keyword">int</span> border,
+                 <span class="hljs-keyword">int</span> spacing = <span class="hljs-number">-1</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name = <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-function">QT3_SUPPORT_CONSTRUCTOR <span class="hljs-title">QVBoxLayout</span><span class="hljs-params">(QLayout *parentLayout,
+                 <span class="hljs-keyword">int</span> spacing = <span class="hljs-number">-1</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name = <span class="hljs-number">0</span>)</span></span>;
+    <span class="hljs-function">QT3_SUPPORT_CONSTRUCTOR <span class="hljs-title">QVBoxLayout</span><span class="hljs-params">(<span class="hljs-keyword">int</span> spacing, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name = <span class="hljs-number">0</span>)</span></span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
+<!-- qboxlayout.md ends here -->
 
                                 
                                 </section>
@@ -887,12 +977,12 @@
 
             
                 
-                <a href="../QtCore/qvariant.md" class="navigation navigation-prev " aria-label="Previous page: QVariant">
+                <a href="qapplication.html" class="navigation navigation-prev " aria-label="Previous page: QApplication*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="qabstractbutton.html" class="navigation navigation-next " aria-label="Next page: QAbstractButton*">
+                <a href="qcheckbox.md" class="navigation navigation-next " aria-label="Next page: QCheckBox">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -903,7 +993,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"QtGui","level":"1.3","depth":1,"next":{"title":"QAbstractButton*","level":"1.3.1","depth":2,"path":"QtGui/qabstractbutton.md","ref":"QtGui/qabstractbutton.md","articles":[]},"previous":{"title":"QVariant","level":"1.2.20","depth":2,"path":"QtCore/qvariant.md","ref":"QtCore/qvariant.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtGui/README.md","mtime":"2017-12-13T11:51:28.049Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"QBoxLayout/QHBoxLayout/QVBoxLayout*","level":"1.3.5","depth":2,"next":{"title":"QCheckBox","level":"1.3.6","depth":2,"path":"QtGui/qcheckbox.md","ref":"QtGui/qcheckbox.md","articles":[]},"previous":{"title":"QApplication*","level":"1.3.4","depth":2,"path":"QtGui/qapplication.md","ref":"QtGui/qapplication.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtGui/qboxlayout.md","mtime":"2017-12-24T02:45:19.926Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

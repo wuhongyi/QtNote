@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 12月 13 16:06:24 2017 (+0800)
-;; Last-Updated: 三 12月 13 18:50:25 2017 (+0800)
+;; Last-Updated: 日 12月 24 16:33:10 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 6
+;;     Update #: 7
 ;; URL: http://wuhongyi.cn -->
 
 # 简介
@@ -43,6 +43,9 @@ UNIX平台的Qt4版本还包含QtDBus扩展模块，该模块提供了使用D-Bu
 ```text
 一般可以在应用程序中通过#include<QtGui/QtGui>包含整个QtGui模块所有类的头文件，其中第一个QtGui是模块名，第二个QtGui是QtGui模块（文件夹）下的预定义头文件（或者使用#include<QtGui>，其效果相同，不过此时<QtGui>是QtGui模块（文件夹）下的预定义头文件）；也可以单独包含某个类的头文件：#include<QtGui/Qapplication>(或者#include<Qapplication>)
 ```
+
+
+<!-- 精通Qt4编程 book 70 -->
 
 
 

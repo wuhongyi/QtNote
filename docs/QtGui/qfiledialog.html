@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>QtGui · GitBook</title>
+        <title>QFileDialog* · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="qabstractbutton.html" />
+    <link rel="next" href="qfontdialog.html" />
     
     
-    <link rel="prev" href="../QtCore/qvariant.md" />
+    <link rel="prev" href="qerrormessage.h" />
     
 
     </head>
@@ -381,7 +381,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="./">
+        <li class="chapter " data-level="1.3" data-path="./">
             
                 <a href="./">
             
@@ -538,7 +538,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.12" data-path="qfiledialog.html">
+        <li class="chapter active" data-level="1.3.12" data-path="qfiledialog.html">
             
                 <a href="qfiledialog.html">
             
@@ -833,7 +833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >QtGui</a>
+        <a href=".." >QFileDialog*</a>
     </h1>
 </div>
 
@@ -848,18 +848,218 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <!-- README.md --- 
+                                <!-- qfiledialog.md --- 
 ;; 
 ;; Description: 
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
-;; Created: 三 12月 13 19:51:19 2017 (+0800)
-;; Last-Updated: 三 12月 13 19:51:27 2017 (+0800)
+;; Created: 日 12月 24 12:27:55 2017 (+0800)
+;; Last-Updated: 日 12月 24 12:29:31 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
 ;; URL: http://wuhongyi.cn -->
-<h1 id="readme">README</h1>
-<!-- README.md ends here -->
+<h1 id="qfiledialog">qfiledialog</h1>
+<pre><code class="lang-cpp">// QFileDialog : public QDialog
+
+public:
+    enum ViewMode { Detail, List };
+    enum FileMode { AnyFile, ExistingFile, Directory, ExistingFiles, DirectoryOnly };
+    enum AcceptMode { AcceptOpen, AcceptSave };
+    enum DialogLabel { LookIn, FileName, FileType, Accept, Reject };
+
+    // ### Rename to FileDialogOption and FileDialogOptions for Qt 5.0
+    enum Option
+    {
+        ShowDirsOnly          = 0x00000001,
+        DontResolveSymlinks   = 0x00000002,
+        DontConfirmOverwrite  = 0x00000004,
+        DontUseSheet          = 0x00000008,
+        DontUseNativeDialog   = 0x00000010,
+        ReadOnly              = 0x00000020,
+        HideNameFilterDetails = 0x00000040
+    };
+    Q_DECLARE_FLAGS(Options, Option)
+
+    QFileDialog(QWidget *parent, Qt::WindowFlags f);
+    explicit QFileDialog(QWidget *parent = 0,
+                         const QString &amp;caption = QString(),
+                         const QString &amp;directory = QString(),
+                         const QString &amp;filter = QString());
+    ~QFileDialog();
+
+    void setDirectory(const QString &amp;directory);
+    inline void setDirectory(const QDir &amp;directory);
+    QDir directory() const;
+
+    void selectFile(const QString &amp;filename);
+    QStringList selectedFiles() const;
+
+#ifdef QT_DEPRECATED
+    QT_DEPRECATED void setFilter(const QString &amp;filter);
+    QT_DEPRECATED void setFilters(const QStringList &amp;filters);
+    QT_DEPRECATED QStringList filters() const;
+    QT_DEPRECATED void selectFilter(const QString &amp;filter);
+    QT_DEPRECATED QString selectedFilter() const;
+#endif
+    void setNameFilterDetailsVisible(bool enabled);
+    bool isNameFilterDetailsVisible() const;
+
+    void setNameFilter(const QString &amp;filter);
+    void setNameFilters(const QStringList &amp;filters);
+    QStringList nameFilters() const;
+    void selectNameFilter(const QString &amp;filter);
+    QString selectedNameFilter() const;
+
+    QDir::Filters filter() const;
+    void setFilter(QDir::Filters filters);
+
+    void setViewMode(ViewMode mode);
+    ViewMode viewMode() const;
+
+    void setFileMode(FileMode mode);
+    FileMode fileMode() const;
+
+    void setAcceptMode(AcceptMode mode);
+    AcceptMode acceptMode() const;
+
+    void setReadOnly(bool enabled);
+    bool isReadOnly() const;
+
+    void setResolveSymlinks(bool enabled);
+    bool resolveSymlinks() const;
+
+    void setSidebarUrls(const QList&lt;QUrl&gt; &amp;urls);
+    QList&lt;QUrl&gt; sidebarUrls() const;
+
+    QByteArray saveState() const;
+    bool restoreState(const QByteArray &amp;state);
+
+    void setConfirmOverwrite(bool enabled);
+    bool confirmOverwrite() const;
+
+    void setDefaultSuffix(const QString &amp;suffix);
+    QString defaultSuffix() const;
+
+    void setHistory(const QStringList &amp;paths);
+    QStringList history() const;
+
+    void setItemDelegate(QAbstractItemDelegate *delegate);
+    QAbstractItemDelegate *itemDelegate() const;
+
+    void setIconProvider(QFileIconProvider *provider);
+    QFileIconProvider *iconProvider() const;
+
+    void setLabelText(DialogLabel label, const QString &amp;text);
+    QString labelText(DialogLabel label) const;
+
+#ifndef QT_NO_PROXYMODEL
+    void setProxyModel(QAbstractProxyModel *model);
+    QAbstractProxyModel *proxyModel() const;
+#endif
+
+    void setOption(Option option, bool on = true);
+    bool testOption(Option option) const;
+    void setOptions(Options options);
+    Options options() const;
+
+#ifdef Q_NO_USING_KEYWORD
+#ifndef Q_QDOC
+    void open() { QDialog::open(); }
+#endif
+#else
+    using QDialog::open;
+#endif
+    void open(QObject *receiver, const char *member);
+    void setVisible(bool visible);
+
+Q_SIGNALS:
+    void fileSelected(const QString &amp;file);
+    void filesSelected(const QStringList &amp;files);
+    void currentChanged(const QString &amp;path);
+    void directoryEntered(const QString &amp;directory);
+    void filterSelected(const QString &amp;filter);
+
+public:
+#ifdef QT3_SUPPORT
+    typedef FileMode Mode;
+    inline QT3_SUPPORT void setMode(FileMode m) { setFileMode(m); }
+    inline QT3_SUPPORT FileMode mode() const { return fileMode(); }
+    inline QT3_SUPPORT void setDir(const QString &amp;directory) { setDirectory(directory); }
+    inline QT3_SUPPORT void setDir( const QDir &amp;directory ) { setDirectory(directory); }
+    QT3_SUPPORT QString selectedFile() const;
+#endif
+
+    static QString getOpenFileName(QWidget *parent = 0,
+                                   const QString &amp;caption = QString(),
+                                   const QString &amp;dir = QString(),
+                                   const QString &amp;filter = QString(),
+                                   QString *selectedFilter = 0,
+                                   Options options = 0);
+
+    static QString getSaveFileName(QWidget *parent = 0,
+                                   const QString &amp;caption = QString(),
+                                   const QString &amp;dir = QString(),
+                                   const QString &amp;filter = QString(),
+                                   QString *selectedFilter = 0,
+                                   Options options = 0);
+
+    static QString getExistingDirectory(QWidget *parent = 0,
+                                        const QString &amp;caption = QString(),
+                                        const QString &amp;dir = QString(),
+                                        Options options = ShowDirsOnly);
+
+    static QStringList getOpenFileNames(QWidget *parent = 0,
+                                        const QString &amp;caption = QString(),
+                                        const QString &amp;dir = QString(),
+                                        const QString &amp;filter = QString(),
+                                        QString *selectedFilter = 0,
+                                        Options options = 0);
+
+#ifdef QT3_SUPPORT
+    inline static QString QT3_SUPPORT getOpenFileName(const QString &amp;dir,
+                                                    const QString &amp;filter = QString(),
+                                                    QWidget *parent = 0, const char* name = 0,
+                                                    const QString &amp;caption = QString(),
+                                                    QString *selectedFilter = 0,
+                                                    bool resolveSymlinks = true)
+        { Q_UNUSED(name);
+          return getOpenFileName(parent, caption, dir, filter, selectedFilter,
+                                 resolveSymlinks ? Option(0) : DontResolveSymlinks); }
+
+    inline static QString QT3_SUPPORT getSaveFileName(const QString &amp;dir,
+                                                    const QString &amp;filter = QString(),
+                                                    QWidget *parent = 0, const char* name = 0,
+                                                    const QString &amp;caption = QString(),
+                                                    QString *selectedFilter = 0,
+                                                    bool resolveSymlinks = true)
+        { Q_UNUSED(name);
+          return getSaveFileName(parent, caption, dir, filter, selectedFilter,
+                                 resolveSymlinks ? Option(0) : DontResolveSymlinks); }
+
+    inline static QString QT3_SUPPORT getExistingDirectory(const QString &amp;dir,
+                                                         QWidget *parent = 0,
+                                                         const char* name = 0,
+                                                         const QString &amp;caption = QString(),
+                                                         bool dirOnly = true,
+                                                         bool resolveSymlinks = true)
+        { Q_UNUSED(name);
+          return getExistingDirectory(parent, caption, dir,
+                                      Options((resolveSymlinks ? Option(0) : DontResolveSymlinks)
+                                      | (dirOnly ? ShowDirsOnly : Option(0)))); }
+
+    inline static QStringList QT3_SUPPORT getOpenFileNames(const QString &amp;filter,
+                                                         const QString &amp;dir = QString(),
+                                                         QWidget *parent = 0,
+                                                         const char* name = 0,
+                                                         const QString &amp;caption = QString(),
+                                                         QString *selectedFilter = 0,
+                                                         bool resolveSymlinks = true)
+        { Q_UNUSED(name);
+          return getOpenFileNames(parent, caption, dir, filter, selectedFilter,
+                                  resolveSymlinks ? Option(0) : DontResolveSymlinks); }
+#endif // QT3_SUPPORT
+</code></pre>
+<!-- qfiledialog.md ends here -->
 
                                 
                                 </section>
@@ -887,12 +1087,12 @@
 
             
                 
-                <a href="../QtCore/qvariant.md" class="navigation navigation-prev " aria-label="Previous page: QVariant">
+                <a href="qerrormessage.h" class="navigation navigation-prev " aria-label="Previous page: QErrorMessage*">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="qabstractbutton.html" class="navigation navigation-next " aria-label="Next page: QAbstractButton*">
+                <a href="qfontdialog.html" class="navigation navigation-next " aria-label="Next page: QFontDialog*">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -903,7 +1103,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"QtGui","level":"1.3","depth":1,"next":{"title":"QAbstractButton*","level":"1.3.1","depth":2,"path":"QtGui/qabstractbutton.md","ref":"QtGui/qabstractbutton.md","articles":[]},"previous":{"title":"QVariant","level":"1.2.20","depth":2,"path":"QtCore/qvariant.md","ref":"QtCore/qvariant.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtGui/README.md","mtime":"2017-12-13T11:51:28.049Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"QFileDialog*","level":"1.3.12","depth":2,"next":{"title":"QFontDialog*","level":"1.3.13","depth":2,"path":"QtGui/qfontdialog.md","ref":"QtGui/qfontdialog.md","articles":[]},"previous":{"title":"QErrorMessage*","level":"1.3.11","depth":2,"path":"QtGui/qerrormessage.h","ref":"QtGui/qerrormessage.h","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtGui/qfiledialog.md","mtime":"2017-12-24T04:29:31.653Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>QtCore · GitBook</title>
+        <title>QCoreApplication* · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="qlocale_blackberry.html" />
+    <link rel="next" href="qdatetime.md" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="qlocale_blackberry.html" />
     
 
     </head>
@@ -102,7 +102,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="./">
+        <li class="chapter " data-level="1.2" data-path="./">
             
                 <a href="./">
             
@@ -129,7 +129,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="qcoreapplication.html">
+        <li class="chapter active" data-level="1.2.2" data-path="qcoreapplication.html">
             
                 <a href="qcoreapplication.html">
             
@@ -833,7 +833,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >QtCore</a>
+        <a href=".." >QCoreApplication*</a>
     </h1>
 </div>
 
@@ -848,18 +848,139 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <!-- README.md --- 
+                                <!-- qcoreapplication.md --- 
 ;; 
 ;; Description: 
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
-;; Created: 三 12月 13 19:50:53 2017 (+0800)
-;; Last-Updated: 三 12月 13 19:51:07 2017 (+0800)
+;; Created: 三 12月 13 20:56:05 2017 (+0800)
+;; Last-Updated: 三 12月 13 20:57:37 2017 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
 ;; URL: http://wuhongyi.cn -->
-<h1 id="readme">README</h1>
-<!-- README.md ends here -->
+<h1 id="qcoreapplication">qcoreapplication</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// QCoreApplication : public QObject</span>
+
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">enum</span> { ApplicationFlags = QT_VERSION
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> !defined(QT3_SUPPORT)</span>
+        | <span class="hljs-number">0x01000000</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+    };
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> defined(QT_BUILD_CORE_LIB) || defined(qdoc)</span>
+    QCoreApplication(<span class="hljs-keyword">int</span> &amp;argc, <span class="hljs-keyword">char</span> **argv); <span class="hljs-comment">// ### Qt5 remove</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> !defined(qdoc)</span>
+    QCoreApplication(<span class="hljs-keyword">int</span> &amp;argc, <span class="hljs-keyword">char</span> **argv, <span class="hljs-keyword">int</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> !defined(QT_BUILD_CORE_LIB)</span>
+        = ApplicationFlags
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+        );
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+
+    ~QCoreApplication();
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> QT_DEPRECATED</span>
+    <span class="hljs-function">QT_DEPRECATED <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">argc</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function">QT_DEPRECATED <span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span> **<span class="hljs-title">argv</span><span class="hljs-params">()</span></span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QStringList <span class="hljs-title">arguments</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAttribute</span><span class="hljs-params">(Qt::ApplicationAttribute attribute, <span class="hljs-keyword">bool</span> on = <span class="hljs-literal">true</span>)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">testAttribute</span><span class="hljs-params">(Qt::ApplicationAttribute attribute)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setOrganizationDomain</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QString &amp;orgDomain)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QString <span class="hljs-title">organizationDomain</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setOrganizationName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QString &amp;orgName)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QString <span class="hljs-title">organizationName</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setApplicationName</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QString &amp;application)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QString <span class="hljs-title">applicationName</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setApplicationVersion</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QString &amp;version)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QString <span class="hljs-title">applicationVersion</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QCoreApplication *<span class="hljs-title">instance</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> self; }
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">exec</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processEvents</span><span class="hljs-params">(QEventLoop::ProcessEventsFlags flags = QEventLoop::AllEvents)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">processEvents</span><span class="hljs-params">(QEventLoop::ProcessEventsFlags flags, <span class="hljs-keyword">int</span> maxtime)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">exit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> retcode=<span class="hljs-number">0</span>)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">sendEvent</span><span class="hljs-params">(QObject *receiver, QEvent *event)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">postEvent</span><span class="hljs-params">(QObject *receiver, QEvent *event)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">postEvent</span><span class="hljs-params">(QObject *receiver, QEvent *event, <span class="hljs-keyword">int</span> priority)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sendPostedEvents</span><span class="hljs-params">(QObject *receiver, <span class="hljs-keyword">int</span> event_type)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sendPostedEvents</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">removePostedEvents</span><span class="hljs-params">(QObject *receiver)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">removePostedEvents</span><span class="hljs-params">(QObject *receiver, <span class="hljs-keyword">int</span> eventType)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">hasPendingEvents</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">notify</span><span class="hljs-params">(QObject *, QEvent *)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">startingUp</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">closingDown</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QString <span class="hljs-title">applicationDirPath</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QString <span class="hljs-title">applicationFilePath</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> qint64 <span class="hljs-title">applicationPid</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> QT_NO_LIBRARY</span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setLibraryPaths</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QStringList &amp;)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QStringList <span class="hljs-title">libraryPaths</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addLibraryPath</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QString &amp;)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">removeLibraryPath</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QString &amp;)</span></span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">// QT_NO_LIBRARY</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> QT_NO_TRANSLATION</span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">installTranslator</span><span class="hljs-params">(QTranslator * messageFile)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">removeTranslator</span><span class="hljs-params">(QTranslator * messageFile)</span></span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+    <span class="hljs-keyword">enum</span> Encoding { CodecForTr, UnicodeUTF8, DefaultCodec = CodecForTr };
+    <span class="hljs-comment">// ### Qt 5: merge</span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QString <span class="hljs-title">translate</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * context,
+                             <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * key,
+                             <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * disambiguation = <span class="hljs-number">0</span>,
+                             Encoding encoding = CodecForTr)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QString <span class="hljs-title">translate</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * context,
+                             <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * key,
+                             <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * disambiguation,
+                             Encoding encoding, <span class="hljs-keyword">int</span> n)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">flush</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> defined(QT3_SUPPORT)</span>
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> QT3_SUPPORT <span class="hljs-keyword">void</span> <span class="hljs-title">lock</span><span class="hljs-params">()</span> </span>{}
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> QT3_SUPPORT <span class="hljs-keyword">void</span> <span class="hljs-title">unlock</span><span class="hljs-params">(<span class="hljs-keyword">bool</span> = <span class="hljs-literal">true</span>)</span> </span>{}
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> QT3_SUPPORT <span class="hljs-keyword">bool</span> <span class="hljs-title">locked</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; }
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> QT3_SUPPORT <span class="hljs-keyword">bool</span> <span class="hljs-title">tryLock</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; }
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">inline</span> QT3_SUPPORT <span class="hljs-keyword">void</span> <span class="hljs-title">processOneEvent</span><span class="hljs-params">()</span>
+    </span>{ processEvents(QEventLoop::WaitForMoreEvents); }
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QT3_SUPPORT <span class="hljs-keyword">int</span> <span class="hljs-title">enter_loop</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QT3_SUPPORT <span class="hljs-keyword">void</span> <span class="hljs-title">exit_loop</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">static</span> QT3_SUPPORT <span class="hljs-keyword">int</span> <span class="hljs-title">loopLevel</span><span class="hljs-params">()</span></span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> defined(Q_WS_WIN)</span>
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">winEventFilter</span><span class="hljs-params">(MSG *message, <span class="hljs-keyword">long</span> *result)</span></span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> defined(Q_OS_UNIX) &amp;&amp; !defined(Q_OS_SYMBIAN)</span>
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">watchUnixSignal</span><span class="hljs-params">(<span class="hljs-keyword">int</span> signal, <span class="hljs-keyword">bool</span> watch)</span></span>;
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+
+    <span class="hljs-function"><span class="hljs-keyword">typedef</span> <span class="hljs-title">bool</span> <span class="hljs-params">(*EventFilter)</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *message, <span class="hljs-keyword">long</span> *result)</span></span>;
+    <span class="hljs-function">EventFilter <span class="hljs-title">setEventFilter</span><span class="hljs-params">(EventFilter filter)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">filterEvent</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *message, <span class="hljs-keyword">long</span> *result)</span></span>;
+
+<span class="hljs-keyword">public</span> Q_SLOTS:
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">quit</span><span class="hljs-params">()</span></span>;
+
+Q_SIGNALS:
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">aboutToQuit</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">unixSignal</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>;
+</code></pre>
+<!-- qcoreapplication.md ends here -->
 
                                 
                                 </section>
@@ -887,12 +1008,12 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 简介">
+                <a href="qlocale_blackberry.html" class="navigation navigation-prev " aria-label="Previous page: QBBSystemLocaleData">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="qlocale_blackberry.html" class="navigation navigation-next " aria-label="Next page: QBBSystemLocaleData">
+                <a href="qdatetime.md" class="navigation navigation-next " aria-label="Next page: QDate/QDateTime">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -903,7 +1024,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"QtCore","level":"1.2","depth":1,"next":{"title":"QBBSystemLocaleData","level":"1.2.1","depth":2,"path":"QtCore/qlocale_blackberry.md","ref":"QtCore/qlocale_blackberry.md","articles":[]},"previous":{"title":"简介","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtCore/README.md","mtime":"2017-12-13T11:51:07.943Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"QCoreApplication*","level":"1.2.2","depth":2,"next":{"title":"QDate/QDateTime","level":"1.2.3","depth":2,"path":"QtCore/qdatetime.md","ref":"QtCore/qdatetime.md","articles":[]},"previous":{"title":"QBBSystemLocaleData","level":"1.2.1","depth":2,"path":"QtCore/qlocale_blackberry.md","ref":"QtCore/qlocale_blackberry.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtCore/qcoreapplication.md","mtime":"2017-12-13T12:57:37.926Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-12-24T08:34:37.723Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
