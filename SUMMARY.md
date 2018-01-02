@@ -21,37 +21,51 @@
 	* [Qt/QInternal*](QtCore/qnamespace.md)
     * [QTextCodec/QTextDecoder/QTextEncoder*](QtCore/qtextcodec.md)
 	* [QTextStream/QTextIStream/QTextOStream/QTextStreamFunction/QTextStreamManipulator*](QtCore/qtextstream.md)
-	* [QVariant*](QtCore/qvariant.md)
+	* [QVariant/QVariantHash/QVariantList/QVariantMap*](QtCore/qvariant.md)
 * [QtGui](QtGui/README.md)
 	* [QClipboardEvent/QCloseEvent/QDropEvent/QHelpEvent/QHideEvent/QHoverEvent/QIconDragEvent/QInputEvent/QInputMethodEvent/QKeyEvent/QMouseEvent/QMoveEvent/QPaintEvent/QShowEvent/QTabletEvent/QToolBarChangeEvent/QTouchEvent/QUpdateLaterEvent/QWheelEvent/QWindowStateChangeEvent*](QtGui/qevent.md)
 	* [QAbstractButton*](QtGui/qabstractbutton.md)
 	* [QAction*](QtGui/qaction.md)
 	* [QActionGroup*](QtGui/qactiongroup.md)
     * [QApplication*](QtGui/qapplication.md)
+	* [QBitmap*](QtGui/qbitmap.md)
 	* [QBoxLayout/QHBoxLayout/QVBoxLayout*](QtGui/qboxlayout.md)
+	* [QBrush/QBrushData/QGradient/QRadialGradient/QConicalGradient*](QtGui/qbrush.md)
+	* [QButtonGroup*](QtGui/qbuttongroup.md)
 	* [QCheckBox*](QtGui/qcheckbox.md)
 	* [QColor*](QtGui/qcolor.md)
 	* [QColorDialog*](QtGui/qcolordialog.md)
 	* [QComboBox*](QtGui/qcombobox.md)
+	* [QCursor/QCursorShape*](QtGui/qcursor.md)
 	* [QDialog*](QtGui/qdialog.md)
 	* [QErrorMessage*](QtGui/qerrormessage.md)
 	* [QFileDialog*](QtGui/qfiledialog.md)
+	* [QFont*](QtGui/qfont.md)
 	* [QFontDialog*](QtGui/qfontdialog.md)
     * [QFrame*](QtGui/qframe.md)
     * [QGridLayout*](QtGui/qgridlayout.md)
-	* [QIcon*](QtGui/qicon.md)
+	* [QGroupBox*](QtGui/qgroupbox.md)
+	* [QIcon/QIconSet*](QtGui/qicon.md)
+	* [QImage*](QtGui/qimage.md)
 	* [QInputDialog*](QtGui/qinputdialog.md)
     * [QLabel*](QtGui/qlabel.md)
 	* [QLineEdit*](QtGui/qlineedit.md)
+	* [QMainWindow*](QtGui/qmainwindow.md)
+	* [QMenu*](QtGui/qmenu.md)
 	* [QMessageBox*](QtGui/qmessagebox.md)
 	* [QPageSetupDialog*](QtGui/qpagesetupdialog.md)
     * [QPaintDevice*](QtGui/qpaintdevice.md)
 	* [QPalette/QColorGroup*](QtGui/qpalette.md)
+	* [QPen*](QtGui/qpen.md)
+	* [QPixmap*](QtGui/qpixmap.md)
 	* [QPrintDialog*](QtGui/qprintdialog.md)
 	* [QProgressBar*](QtGui/qprogressbar.md)
 	* [QProgressDialog*](QtGui/qprogressdialog.md)
     * [QPushButton*](QtGui/qpushbutton.md)
+	* [QRadioButton*](QtGui/qradiobutton.md)
 	* [QSizePolicy*](QtGui/qsizepolicy.md)
+	* [QStatusBar*](QtGui/qstatusbar.md)
+	* [QSpinBox*](QtGui/qspinbox.md)
 	* [QTextEdit*](QtGui/qtextedit.md)
 	* [QTableWidget/QTableWidgetItem/QTableWidgetSelectionRange*](QtGui/qtablewidget.md)
     * [QWidget/QWidgetData*](QtGui/qwidget.md)
@@ -113,14 +127,7 @@ QAccessibleWidgetEx
 qaccessiblewidget.h
 
 QAuthDevice
-QBitmap
-qbitmap.h
 
-QBrush
-QBrushData
-qbrush.h
-QButtonGroup
-qbuttongroup.h
 QCalendarWidget
 qcalendarwidget.h
 QCDEStyle
@@ -142,13 +149,11 @@ QCommonStyle
 qcommonstyle.h
 QCompleter
 qcompleter.h
-QConicalGradient
+
 QContextMenuEvent
 QCopChannel
 qcopchannel_qws.h
-QCursor
-qcursor.h
-QCursorShape
+
 QDataWidgetMapper
 qdatawidgetmapper.h
 QDateEdit
@@ -202,7 +207,7 @@ qfilesystemmodel.h
 QFocusEvent
 QFocusFrame
 qfocusframe.h
-QFont
+
 QFontComboBox
 qfontcombobox.h
 QFontDatabase
@@ -211,7 +216,7 @@ qfontdatabase.h
 QFontEngineFactoryInterface
 QFontEngineInfo
 QFontEnginePlugin
-qfont.h
+
 QFontInfo
 qfontinfo.h
 QFontMetrics
@@ -234,7 +239,7 @@ QGestureRecognizer
 qgesturerecognizer.h
 QGlyphRun
 qglyphrun.h
-QGradient
+
 QGradientStop
 QGradientStops
 QGraphicsAnchor
@@ -292,8 +297,6 @@ qgraphicsview.h
 QGraphicsWidget
 qgraphicswidget.h
 
-QGroupBox
-qgroupbox.h
 QGtkStyle
 qgtkstyle.h
 qguifunctions_wince.h
@@ -310,11 +313,9 @@ qiconengineplugin.h
 QIconEnginePluginV2
 QIconEngineV2
 
-QIconSet
 QIdentityProxyModel
 qidentityproxymodel.h
-QImage
-qimage.h
+
 QImageIOHandler
 QImageIOHandlerFactoryInterface
 qimageiohandler.h
@@ -387,8 +388,7 @@ qmacnativewidget_mac.h
 QMacPasteboardMime
 QMacStyle
 qmacstyle_mac.h
-QMainWindow
-qmainwindow.h
+
 QMatrix
 QMatrix2x2
 QMatrix2x3
@@ -405,12 +405,11 @@ QMdiArea
 qmdiarea.h
 QMdiSubWindow
 qmdisubwindow.h
-QMenu
+
 QMenuBar
 qmenubar.h
 QMenubarUpdatedEvent
 qmenudata.h
-qmenu.h
 QMenuItem
 
 qmime.h
@@ -447,8 +446,7 @@ QPainterPathPrivate
 QPainterPathStroker
 
 QPanGesture
-QPen
-qpen.h
+
 QPicture
 QPictureFormatInterface
 QPictureFormatPlugin
@@ -456,10 +454,10 @@ qpictureformatplugin.h
 qpicture.h
 QPictureIO
 QPinchGesture
-QPixmap
+
 QPixmapCache
 qpixmapcache.h
-qpixmap.h
+
 QPlainTextDocumentLayout
 QPlainTextEdit
 qplaintextedit.h
@@ -517,9 +515,7 @@ QQnxMouseHandler
 QQnxScreen
 QQuaternion
 qquaternion.h
-QRadialGradient
-QRadioButton
-qradiobutton.h
+
 QRawFont
 qrawfont.h
 QRegExpValidator
@@ -580,8 +576,7 @@ QSound
 qsound.h
 qsoundqss_qws.h
 QSpacerItem
-QSpinBox
-qspinbox.h
+
 QSplashScreen
 qsplashscreen.h
 QSplitter
@@ -597,8 +592,7 @@ QStandardItemModel
 qstandarditemmodel.h
 QStaticText
 qstatictext.h
-QStatusBar
-qstatusbar.h
+
 QStatusTipEvent
 QStringListModel
 qstringlistmodel.h
@@ -1244,9 +1238,6 @@ QVariantAnimation
 qvariantanimation.h
 QVariantComparisonHelper
 
-QVariantHash
-QVariantList
-QVariantMap
 QVarLengthArray
 qvarlengtharray.h
 QVector

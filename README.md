@@ -4,9 +4,9 @@
 ;; Author: Hongyi Wu(吴鸿毅)
 ;; Email: wuhongyi@qq.com 
 ;; Created: 三 12月 13 16:06:24 2017 (+0800)
-;; Last-Updated: 日 12月 24 16:33:10 2017 (+0800)
+;; Last-Updated: 二 1月  2 23:13:00 2018 (+0800)
 ;;           By: Hongyi Wu(吴鸿毅)
-;;     Update #: 7
+;;     Update #: 11
 ;; URL: http://wuhongyi.cn -->
 
 # 简介
@@ -45,7 +45,18 @@ UNIX平台的Qt4版本还包含QtDBus扩展模块，该模块提供了使用D-Bu
 ```
 
 
-<!-- 精通Qt4编程 book 70 -->
+<!-- 
+```cpp
+//未找到分类
+#include <QDebug>
+
+
+QByteArray
+```
+-->
+
+
+<!-- 精通Qt4编程 book 115 -->
 
 
 
