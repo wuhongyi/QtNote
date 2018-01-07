@@ -32,7 +32,11 @@
 	* [QBoxLayout/QHBoxLayout/QVBoxLayout*](QtGui/qboxlayout.md)
 	* [QBrush/QBrushData/QGradient/QRadialGradient/QConicalGradient*](QtGui/qbrush.md)
 	* [QButtonGroup*](QtGui/qbuttongroup.md)
+	* [QCalendarWidget*](QtGui/qcalendarwidget.md)
+	* [QCDEStyle*](QtGui/qcdestyle.md)
 	* [QCheckBox*](QtGui/qcheckbox.md)
+	* [QCleanlooksStyle*](QtGui/qcleanlooksstyle.md)
+	* [QClipboard*](QtGui/qclipboard.md)
 	* [QColor*](QtGui/qcolor.md)
 	* [QColorDialog*](QtGui/qcolordialog.md)
 	* [QComboBox*](QtGui/qcombobox.md)
@@ -69,6 +73,11 @@
 	* [QTextEdit*](QtGui/qtextedit.md)
 	* [QTableWidget/QTableWidgetItem/QTableWidgetSelectionRange*](QtGui/qtablewidget.md)
     * [QWidget/QWidgetData*](QtGui/qwidget.md)
+	* [QX11EmbedContainer/QX11EmbedWidget*](QtGui/qx11embed_x11.md)
+	* [QX11Info*](QtGui/qx11info_x11.md)
+
+
+
 
 <!--
 QtGui
@@ -127,16 +136,6 @@ QAccessibleWidgetEx
 qaccessiblewidget.h
 
 QAuthDevice
-
-QCalendarWidget
-qcalendarwidget.h
-QCDEStyle
-qcdestyle.h
-
-QCleanlooksStyle
-qcleanlooksstyle.h
-QClipboard
-qclipboard.h
 
 QColormap
 qcolormap.h
@@ -842,11 +841,7 @@ QWSUmKeyboardHandler
 qwsutils_qws.h
 QWSWindow
 QWSWindowInfo
-QX11EmbedContainer
-QX11EmbedWidget
-qx11embed_x11.h
-QX11Info
-qx11info_x11.h
+
 -->
 
 
