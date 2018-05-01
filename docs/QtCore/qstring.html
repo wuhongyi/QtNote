@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>QString/QStringRef* · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>QString/QStringRef* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -1131,9 +1131,8 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="qstring">qstring</h1><pre><code class="lang-cpp">// QString
+<h1 id="qstring">qstring</h1>
+<pre><code class="lang-cpp">// QString
 
 
 public:
@@ -1637,7 +1636,8 @@ public:
 
 public:
     typedef Data * DataPtr;
-    inline DataPtr &amp;data_ptr() { return d; }</code></pre>
+    inline DataPtr &amp;data_ptr() { return d; }
+</code></pre>
 <pre><code class="lang-cpp">// QLatin1String
 
 public:
@@ -1671,7 +1671,8 @@ public:
     inline QT_ASCII_CAST_WARN bool operator&lt;=(const char *s) const
         { return QString::fromAscii(s) &gt;= *this; }
     inline QT_ASCII_CAST_WARN bool operator&gt;=(const char *s) const
-        { return QString::fromAscii(s) &lt;= *this; }</code></pre>
+        { return QString::fromAscii(s) &lt;= *this; }
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QCharRef</span>
 
 <span class="hljs-keyword">public</span>:
@@ -1755,7 +1756,8 @@ public:
     <span class="hljs-function">QT3_SUPPORT <span class="hljs-keyword">char</span> <span class="hljs-title">latin1</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> QChar(*<span class="hljs-keyword">this</span>).toLatin1(); }
     <span class="hljs-function">QT3_SUPPORT <span class="hljs-keyword">char</span> <span class="hljs-title">ascii</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> QChar(*<span class="hljs-keyword">this</span>).toAscii(); }
 <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
 <pre><code class="lang-cpp">#ifdef QT3_SUPPORT
 // QConstString : public QString
 
@@ -1763,7 +1765,8 @@ public:
     inline QT3_SUPPORT_CONSTRUCTOR QConstString(const QChar *aUnicode, int aSize)
         :QString(aUnicode, aSize){} // cannot use fromRawData() due to changed semantics
     inline QT3_SUPPORT const QString &amp;string() const { return *this; }
-#endif</code></pre>
+#endif
+</code></pre>
 <pre><code class="lang-cpp">// QStringRef
 
 public:
@@ -1853,10 +1856,9 @@ public:
     int localeAwareCompare(const QString &amp;s) const;
     int localeAwareCompare(const QStringRef &amp;s) const;
     static int localeAwareCompare(const QStringRef &amp;s1, const QString &amp;s2);
-    static int localeAwareCompare(const QStringRef &amp;s1, const QStringRef &amp;s2);</code></pre>
+    static int localeAwareCompare(const QStringRef &amp;s1, const QStringRef &amp;s2);
+</code></pre>
 <!-- qstring.md ends here -->
-
-
 
                                 
                                 </section>
@@ -1900,7 +1902,7 @@ public:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"QString/QStringRef*","level":"1.2.15","depth":2,"next":{"title":"QStringList/QStringListIterator*","level":"1.2.16","depth":2,"path":"QtCore/qstringlist.md","ref":"QtCore/qstringlist.md","articles":[]},"previous":{"title":"QResource*","level":"1.2.14","depth":2,"path":"QtCore/qresource.md","ref":"QtCore/qresource.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtCore/qstring.md","mtime":"2018-01-07T05:56:16.115Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-01-07T14:05:00.198Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"QString/QStringRef*","level":"1.2.15","depth":2,"next":{"title":"QStringList/QStringListIterator*","level":"1.2.16","depth":2,"path":"QtCore/qstringlist.md","ref":"QtCore/qstringlist.md","articles":[]},"previous":{"title":"QResource*","level":"1.2.14","depth":2,"path":"QtCore/qresource.md","ref":"QtCore/qresource.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtCore/qstring.md","mtime":"2018-01-07T14:09:40.442Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T12:33:44.495Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

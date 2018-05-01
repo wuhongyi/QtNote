@@ -2,12 +2,12 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>QClipboardEvent/QCloseEvent/QDropEvent/QHelpEvent/QHideEvent/QHoverEvent/QIconDragEvent/QInputEvent/QInputMethodEvent/QKeyEvent/QMouseEvent/QMoveEvent/QPaintEvent/QShowEvent/QTabletEvent/QToolBarChangeEvent/QTouchEvent/QUpdateLaterEvent/QWheelEvent/QWindowStateChangeEvent* · GitBook</title>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>QClipboardEvent/QCloseEvent/QDropEvent/QHelpEvent/QHideEvent/QHoverEvent/QIconDragEvent/QInputEvent/QInputMethodEvent/QKeyEvent/QMouseEvent/QMoveEvent/QPaintEvent/QShowEvent/QTabletEvent/QToolBarChangeEvent/QTouchEvent/QUpdateLaterEvent/QWheelEvent/QWindowStateChangeEvent* · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="generator" content="GitBook 3.2.2">
         
         
         
@@ -1131,15 +1131,15 @@
 ;;           By: Hongyi Wu(吴鸿毅)
 ;;     Update #: 1
 ;; URL: http://wuhongyi.cn -->
-
-
-<h1 id="qevent">qevent</h1><pre><code class="lang-cpp"><span class="hljs-comment">// QInputEvent : public QEvent</span>
+<h1 id="qevent">qevent</h1>
+<pre><code class="lang-cpp"><span class="hljs-comment">// QInputEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
     QInputEvent(Type type, Qt::KeyboardModifiers modifiers = Qt::NoModifier);
     ~QInputEvent();
     <span class="hljs-keyword">inline</span> Qt::<span class="hljs-function">KeyboardModifiers <span class="hljs-title">modifiers</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> modState; }
-    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setModifiers</span><span class="hljs-params">(Qt::KeyboardModifiers amodifiers)</span> </span>{ modState = amodifiers; }</code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setModifiers</span><span class="hljs-params">(Qt::KeyboardModifiers amodifiers)</span> </span>{ modState = amodifiers; }
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QMouseEvent : public QInputEvent</span>
 
 <span class="hljs-keyword">public</span>:
@@ -1173,7 +1173,8 @@
     </span>{ <span class="hljs-keyword">return</span> Qt::ButtonState((mouseState^b)|<span class="hljs-keyword">int</span>(modifiers())); }
     <span class="hljs-keyword">inline</span> QT3_SUPPORT Qt::<span class="hljs-function">ButtonState <span class="hljs-title">stateAfter</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span>
     </span>{ <span class="hljs-keyword">return</span> Qt::ButtonState(<span class="hljs-keyword">int</span>(mouseState)|<span class="hljs-keyword">int</span>(modifiers())); }
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QHoverEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
@@ -1181,7 +1182,8 @@
     ~QHoverEvent();
 
     <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QPoint &amp;<span class="hljs-title">pos</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> p; }
-    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QPoint &amp;<span class="hljs-title">oldPos</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> op; }</code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QPoint &amp;<span class="hljs-title">oldPos</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> op; }
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> QT_NO_WHEELEVENT</span>
 <span class="hljs-comment">// QWheelEvent : public QInputEvent</span>
 
@@ -1214,7 +1216,8 @@
     </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">static_cast</span>&lt;Qt::ButtonState&gt;(<span class="hljs-keyword">int</span>(buttons())|<span class="hljs-keyword">int</span>(modifiers())); }
 <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
 
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> QT_NO_TABLETEVENT</span>
 <span class="hljs-comment">// QTabletEvent : public QInputEvent</span>
 
@@ -1247,7 +1250,8 @@
     <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">xTilt</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> mXT; }
     <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">yTilt</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> mYT; }
 
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">// QT_NO_TABLETEVENT</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">// QT_NO_TABLETEVENT</span></span>
+</code></pre>
 <pre><code class="lang-cpp">// QKeyEvent : public QInputEvent
 
 
@@ -1290,7 +1294,8 @@ public:
     { return (txt.length() ? txt.unicode()-&gt;toLatin1() : 0); }
     inline QT3_SUPPORT Qt::ButtonState state() const { return Qt::ButtonState(QInputEvent::modifiers()); }
     inline QT3_SUPPORT Qt::ButtonState stateAfter() const { return Qt::ButtonState(modifiers()); }
-#endif</code></pre>
+#endif
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QFocusEvent : public QEvent</span>
 
 
@@ -1308,7 +1313,8 @@ public:
                   Popup=Qt::PopupFocusReason, Shortcut=Qt::ShortcutFocusReason };
 <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
     Qt::<span class="hljs-function">FocusReason <span class="hljs-title">reason</span><span class="hljs-params">()</span></span>;
-    Qt::<span class="hljs-function">FocusReason <span class="hljs-title">reason</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;</code></pre>
+    Qt::<span class="hljs-function">FocusReason <span class="hljs-title">reason</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QPaintEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
@@ -1323,14 +1329,16 @@ public:
     <span class="hljs-function">QT3_SUPPORT_CONSTRUCTOR <span class="hljs-title">QPaintEvent</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QRegion &amp;paintRegion, <span class="hljs-keyword">const</span> QRect &amp;paintRect)</span></span>;
     <span class="hljs-function"><span class="hljs-keyword">inline</span> QT3_SUPPORT <span class="hljs-keyword">bool</span> <span class="hljs-title">erased</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> m_erased; }
     <span class="hljs-function"><span class="hljs-keyword">inline</span> QT3_SUPPORT <span class="hljs-keyword">void</span> <span class="hljs-title">setErased</span><span class="hljs-params">(<span class="hljs-keyword">bool</span> b)</span> </span>{ m_erased = b; }
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QUpdateLaterEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
     QUpdateLaterEvent(<span class="hljs-keyword">const</span> QRegion&amp; paintRegion);
     ~QUpdateLaterEvent();
 
-    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QRegion &amp;<span class="hljs-title">region</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> m_region; }</code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QRegion &amp;<span class="hljs-title">region</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> m_region; }
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QMoveEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
@@ -1338,7 +1346,8 @@ public:
     ~QMoveEvent();
 
     <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QPoint &amp;<span class="hljs-title">pos</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> p; }
-    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QPoint &amp;<span class="hljs-title">oldPos</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> oldp;}</code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QPoint &amp;<span class="hljs-title">oldPos</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> oldp;}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QResizeEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
@@ -1346,27 +1355,32 @@ public:
     ~QResizeEvent();
 
     <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QSize &amp;<span class="hljs-title">size</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> s; }
-    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QSize &amp;<span class="hljs-title">oldSize</span><span class="hljs-params">()</span><span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> olds;}</code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QSize &amp;<span class="hljs-title">oldSize</span><span class="hljs-params">()</span><span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> olds;}
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QCloseEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
     QCloseEvent();
-    ~QCloseEvent();</code></pre>
+    ~QCloseEvent();
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QIconDragEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
     QIconDragEvent();
-    ~QIconDragEvent();</code></pre>
+    ~QIconDragEvent();
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QShowEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
     QShowEvent();
-    ~QShowEvent();</code></pre>
+    ~QShowEvent();
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QHideEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
     QHideEvent();
-    ~QHideEvent();</code></pre>
+    ~QHideEvent();
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> QT_NO_CONTEXTMENU</span>
 <span class="hljs-comment">// QContextMenuEvent : public QInputEvent</span>
 
@@ -1396,7 +1410,8 @@ public:
     QT3_SUPPORT Qt::<span class="hljs-function">ButtonState <span class="hljs-title">state</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
 <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
 
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">// QT_NO_CONTEXTMENU</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">// QT_NO_CONTEXTMENU</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> QT_NO_INPUTMETHOD</span>
 <span class="hljs-comment">// QInputMethodEvent : public QEvent</span>
 
@@ -1430,7 +1445,8 @@ public:
 
     QInputMethodEvent(<span class="hljs-keyword">const</span> QInputMethodEvent &amp;other);
 
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">// QT_NO_INPUTMETHOD</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">// QT_NO_INPUTMETHOD</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QDropEvent : public QEvent , public QMimeSource</span>
 
 <span class="hljs-keyword">public</span>:
@@ -1485,25 +1501,29 @@ public:
 
 <span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> QT3_SUPPORT</span>
     <span class="hljs-function"><span class="hljs-keyword">inline</span> QT3_SUPPORT <span class="hljs-keyword">void</span> <span class="hljs-title">accept</span><span class="hljs-params">(<span class="hljs-keyword">bool</span> y)</span> </span>{ setAccepted(y); }
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QDragEnterEvent : public QDragMoveEvent</span>
 
 <span class="hljs-keyword">public</span>:
     QDragEnterEvent(<span class="hljs-keyword">const</span> QPoint &amp;pos, Qt::DropActions actions, <span class="hljs-keyword">const</span> QMimeData *data,
                     Qt::MouseButtons buttons, Qt::KeyboardModifiers modifiers);
-    ~QDragEnterEvent();</code></pre>
+    ~QDragEnterEvent();
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QDragResponseEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
     QDragResponseEvent(<span class="hljs-keyword">bool</span> accepted);
     ~QDragResponseEvent();
 
-    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">dragAccepted</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> a; }</code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">dragAccepted</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> a; }
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QDragLeaveEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
     QDragLeaveEvent();
-    ~QDragLeaveEvent();</code></pre>
+    ~QDragLeaveEvent();
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QHelpEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
@@ -1516,7 +1536,8 @@ public:
     <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">globalY</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> gp.y(); }
 
     <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QPoint&amp; <span class="hljs-title">pos</span><span class="hljs-params">()</span>  <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> p; }
-    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QPoint&amp; <span class="hljs-title">globalPos</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> gp; }</code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> QPoint&amp; <span class="hljs-title">globalPos</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> gp; }
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> QT_NO_STATUSTIP</span>
 <span class="hljs-comment">// QStatusTipEvent : public QEvent</span>
 
@@ -1525,7 +1546,8 @@ public:
     ~QStatusTipEvent();
 
     <span class="hljs-function"><span class="hljs-keyword">inline</span> QString <span class="hljs-title">tip</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> s; }
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> QT_NO_WHATSTHIS</span>
 <span class="hljs-comment">// QWhatsThisClickedEvent : public QEvent</span>
 
@@ -1535,7 +1557,8 @@ public:
 
     <span class="hljs-function"><span class="hljs-keyword">inline</span> QString <span class="hljs-title">href</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> s; }
 
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> QT_NO_ACTION</span>
 <span class="hljs-comment">// QActionEvent : public QEvent</span>
 
@@ -1546,7 +1569,8 @@ public:
     <span class="hljs-function"><span class="hljs-keyword">inline</span> QAction *<span class="hljs-title">action</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> act; }
     <span class="hljs-function"><span class="hljs-keyword">inline</span> QAction *<span class="hljs-title">before</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> bef; }
 
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QFileOpenEvent : public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
@@ -1559,7 +1583,8 @@ public:
 
     <span class="hljs-function"><span class="hljs-keyword">inline</span> QString <span class="hljs-title">file</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> f; }
     <span class="hljs-function">QUrl <span class="hljs-title">url</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
-    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">openFile</span><span class="hljs-params">(QFile &amp;file, QIODevice::OpenMode flags)</span> <span class="hljs-keyword">const</span></span>;</code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">openFile</span><span class="hljs-params">(QFile &amp;file, QIODevice::OpenMode flags)</span> <span class="hljs-keyword">const</span></span>;
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> QT_NO_TOOLBAR</span>
 <span class="hljs-comment">// QToolBarChangeEvent : public QEvent</span>
 
@@ -1569,7 +1594,8 @@ public:
 
     <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">toggle</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> tog; }
 
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> QT_NO_SHORTCUT</span>
 <span class="hljs-comment">// QShortcutEvent : public QEvent</span>
 
@@ -1584,7 +1610,8 @@ public:
     <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">isAmbiguous</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> ambig; }
     <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">isAmbiguous</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> ambig; }
 
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> QT_NO_CLIPBOARD</span>
 <span class="hljs-comment">// QClipboardEvent : public QEvent</span>
 
@@ -1594,7 +1621,8 @@ public:
 
     <span class="hljs-function">QEventPrivate *<span class="hljs-title">data</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> d; }
 
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QWindowStateChangeEvent: public QEvent</span>
 
 <span class="hljs-keyword">public</span>:
@@ -1603,7 +1631,8 @@ public:
     ~QWindowStateChangeEvent();
 
     <span class="hljs-keyword">inline</span> Qt::<span class="hljs-function">WindowStates <span class="hljs-title">oldState</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>{ <span class="hljs-keyword">return</span> ostate; }
-    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isOverride</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;</code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isOverride</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> QT3_SUPPORT</span>
 <span class="hljs-comment">// QMenubarUpdatedEvent: public QEvent</span>
 
@@ -1611,7 +1640,8 @@ public:
     QMenubarUpdatedEvent(QMenuBar * <span class="hljs-keyword">const</span> menBar);
     <span class="hljs-function"><span class="hljs-keyword">inline</span> QMenuBar *<span class="hljs-title">menuBar</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> m_menuBar; }
 
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
 <pre><code class="lang-cpp"><span class="hljs-comment">// QTouchEvent : public QInputEvent</span>
 
 <span class="hljs-keyword">public</span>:
@@ -1742,10 +1772,9 @@ public:
     <span class="hljs-function">QPointF <span class="hljs-title">mapToGraphicsScene</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QPointF &amp;gesturePoint)</span> <span class="hljs-keyword">const</span></span>;
 <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
 
-<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">// QT_NO_GESTURES</span></span></code></pre>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">// QT_NO_GESTURES</span></span>
+</code></pre>
 <!-- qevent.md ends here -->
-
-
 
                                 
                                 </section>
@@ -1789,7 +1818,7 @@ public:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"QClipboardEvent/QCloseEvent/QDropEvent/QHelpEvent/QHideEvent/QHoverEvent/QIconDragEvent/QInputEvent/QInputMethodEvent/QKeyEvent/QMouseEvent/QMoveEvent/QPaintEvent/QShowEvent/QTabletEvent/QToolBarChangeEvent/QTouchEvent/QUpdateLaterEvent/QWheelEvent/QWindowStateChangeEvent*","level":"1.3.1","depth":2,"next":{"title":"QAbstractButton*","level":"1.3.2","depth":2,"path":"QtGui/qabstractbutton.md","ref":"QtGui/qabstractbutton.md","articles":[]},"previous":{"title":"QtGui","level":"1.3","depth":1,"path":"QtGui/README.md","ref":"QtGui/README.md","articles":[{"title":"QClipboardEvent/QCloseEvent/QDropEvent/QHelpEvent/QHideEvent/QHoverEvent/QIconDragEvent/QInputEvent/QInputMethodEvent/QKeyEvent/QMouseEvent/QMoveEvent/QPaintEvent/QShowEvent/QTabletEvent/QToolBarChangeEvent/QTouchEvent/QUpdateLaterEvent/QWheelEvent/QWindowStateChangeEvent*","level":"1.3.1","depth":2,"path":"QtGui/qevent.md","ref":"QtGui/qevent.md","articles":[]},{"title":"QAbstractButton*","level":"1.3.2","depth":2,"path":"QtGui/qabstractbutton.md","ref":"QtGui/qabstractbutton.md","articles":[]},{"title":"QAction*","level":"1.3.3","depth":2,"path":"QtGui/qaction.md","ref":"QtGui/qaction.md","articles":[]},{"title":"QActionGroup*","level":"1.3.4","depth":2,"path":"QtGui/qactiongroup.md","ref":"QtGui/qactiongroup.md","articles":[]},{"title":"QApplication*","level":"1.3.5","depth":2,"path":"QtGui/qapplication.md","ref":"QtGui/qapplication.md","articles":[]},{"title":"QBitmap*","level":"1.3.6","depth":2,"path":"QtGui/qbitmap.md","ref":"QtGui/qbitmap.md","articles":[]},{"title":"QBoxLayout/QHBoxLayout/QVBoxLayout*","level":"1.3.7","depth":2,"path":"QtGui/qboxlayout.md","ref":"QtGui/qboxlayout.md","articles":[]},{"title":"QBrush/QBrushData/QGradient/QRadialGradient/QConicalGradient*","level":"1.3.8","depth":2,"path":"QtGui/qbrush.md","ref":"QtGui/qbrush.md","articles":[]},{"title":"QButtonGroup*","level":"1.3.9","depth":2,"path":"QtGui/qbuttongroup.md","ref":"QtGui/qbuttongroup.md","articles":[]},{"title":"QCalendarWidget*","level":"1.3.10","depth":2,"path":"QtGui/qcalendarwidget.md","ref":"QtGui/qcalendarwidget.md","articles":[]},{"title":"QCDEStyle*","level":"1.3.11","depth":2,"path":"QtGui/qcdestyle.md","ref":"QtGui/qcdestyle.md","articles":[]},{"title":"QCheckBox*","level":"1.3.12","depth":2,"path":"QtGui/qcheckbox.md","ref":"QtGui/qcheckbox.md","articles":[]},{"title":"QCleanlooksStyle*","level":"1.3.13","depth":2,"path":"QtGui/qcleanlooksstyle.md","ref":"QtGui/qcleanlooksstyle.md","articles":[]},{"title":"QClipboard*","level":"1.3.14","depth":2,"path":"QtGui/qclipboard.md","ref":"QtGui/qclipboard.md","articles":[]},{"title":"QColor*","level":"1.3.15","depth":2,"path":"QtGui/qcolor.md","ref":"QtGui/qcolor.md","articles":[]},{"title":"QColorDialog*","level":"1.3.16","depth":2,"path":"QtGui/qcolordialog.md","ref":"QtGui/qcolordialog.md","articles":[]},{"title":"QComboBox*","level":"1.3.17","depth":2,"path":"QtGui/qcombobox.md","ref":"QtGui/qcombobox.md","articles":[]},{"title":"QCursor/QCursorShape*","level":"1.3.18","depth":2,"path":"QtGui/qcursor.md","ref":"QtGui/qcursor.md","articles":[]},{"title":"QDialog*","level":"1.3.19","depth":2,"path":"QtGui/qdialog.md","ref":"QtGui/qdialog.md","articles":[]},{"title":"QErrorMessage*","level":"1.3.20","depth":2,"path":"QtGui/qerrormessage.md","ref":"QtGui/qerrormessage.md","articles":[]},{"title":"QFileDialog*","level":"1.3.21","depth":2,"path":"QtGui/qfiledialog.md","ref":"QtGui/qfiledialog.md","articles":[]},{"title":"QFont*","level":"1.3.22","depth":2,"path":"QtGui/qfont.md","ref":"QtGui/qfont.md","articles":[]},{"title":"QFontDialog*","level":"1.3.23","depth":2,"path":"QtGui/qfontdialog.md","ref":"QtGui/qfontdialog.md","articles":[]},{"title":"QFrame*","level":"1.3.24","depth":2,"path":"QtGui/qframe.md","ref":"QtGui/qframe.md","articles":[]},{"title":"QGridLayout*","level":"1.3.25","depth":2,"path":"QtGui/qgridlayout.md","ref":"QtGui/qgridlayout.md","articles":[]},{"title":"QGroupBox*","level":"1.3.26","depth":2,"path":"QtGui/qgroupbox.md","ref":"QtGui/qgroupbox.md","articles":[]},{"title":"QIcon/QIconSet*","level":"1.3.27","depth":2,"path":"QtGui/qicon.md","ref":"QtGui/qicon.md","articles":[]},{"title":"QImage*","level":"1.3.28","depth":2,"path":"QtGui/qimage.md","ref":"QtGui/qimage.md","articles":[]},{"title":"QInputDialog*","level":"1.3.29","depth":2,"path":"QtGui/qinputdialog.md","ref":"QtGui/qinputdialog.md","articles":[]},{"title":"QLabel*","level":"1.3.30","depth":2,"path":"QtGui/qlabel.md","ref":"QtGui/qlabel.md","articles":[]},{"title":"QLineEdit*","level":"1.3.31","depth":2,"path":"QtGui/qlineedit.md","ref":"QtGui/qlineedit.md","articles":[]},{"title":"QMainWindow*","level":"1.3.32","depth":2,"path":"QtGui/qmainwindow.md","ref":"QtGui/qmainwindow.md","articles":[]},{"title":"QMenu*","level":"1.3.33","depth":2,"path":"QtGui/qmenu.md","ref":"QtGui/qmenu.md","articles":[]},{"title":"QMessageBox*","level":"1.3.34","depth":2,"path":"QtGui/qmessagebox.md","ref":"QtGui/qmessagebox.md","articles":[]},{"title":"QPageSetupDialog*","level":"1.3.35","depth":2,"path":"QtGui/qpagesetupdialog.md","ref":"QtGui/qpagesetupdialog.md","articles":[]},{"title":"QPaintDevice*","level":"1.3.36","depth":2,"path":"QtGui/qpaintdevice.md","ref":"QtGui/qpaintdevice.md","articles":[]},{"title":"QPalette/QColorGroup*","level":"1.3.37","depth":2,"path":"QtGui/qpalette.md","ref":"QtGui/qpalette.md","articles":[]},{"title":"QPen*","level":"1.3.38","depth":2,"path":"QtGui/qpen.md","ref":"QtGui/qpen.md","articles":[]},{"title":"QPixmap*","level":"1.3.39","depth":2,"path":"QtGui/qpixmap.md","ref":"QtGui/qpixmap.md","articles":[]},{"title":"QPrintDialog*","level":"1.3.40","depth":2,"path":"QtGui/qprintdialog.md","ref":"QtGui/qprintdialog.md","articles":[]},{"title":"QProgressBar*","level":"1.3.41","depth":2,"path":"QtGui/qprogressbar.md","ref":"QtGui/qprogressbar.md","articles":[]},{"title":"QProgressDialog*","level":"1.3.42","depth":2,"path":"QtGui/qprogressdialog.md","ref":"QtGui/qprogressdialog.md","articles":[]},{"title":"QPushButton*","level":"1.3.43","depth":2,"path":"QtGui/qpushbutton.md","ref":"QtGui/qpushbutton.md","articles":[]},{"title":"QRadioButton*","level":"1.3.44","depth":2,"path":"QtGui/qradiobutton.md","ref":"QtGui/qradiobutton.md","articles":[]},{"title":"QSizePolicy*","level":"1.3.45","depth":2,"path":"QtGui/qsizepolicy.md","ref":"QtGui/qsizepolicy.md","articles":[]},{"title":"QStatusBar*","level":"1.3.46","depth":2,"path":"QtGui/qstatusbar.md","ref":"QtGui/qstatusbar.md","articles":[]},{"title":"QSpinBox*","level":"1.3.47","depth":2,"path":"QtGui/qspinbox.md","ref":"QtGui/qspinbox.md","articles":[]},{"title":"QTextEdit*","level":"1.3.48","depth":2,"path":"QtGui/qtextedit.md","ref":"QtGui/qtextedit.md","articles":[]},{"title":"QTableWidget/QTableWidgetItem/QTableWidgetSelectionRange*","level":"1.3.49","depth":2,"path":"QtGui/qtablewidget.md","ref":"QtGui/qtablewidget.md","articles":[]},{"title":"QWidget/QWidgetData*","level":"1.3.50","depth":2,"path":"QtGui/qwidget.md","ref":"QtGui/qwidget.md","articles":[]},{"title":"QX11EmbedContainer/QX11EmbedWidget*","level":"1.3.51","depth":2,"path":"QtGui/qx11embed_x11.md","ref":"QtGui/qx11embed_x11.md","articles":[]},{"title":"QX11Info*","level":"1.3.52","depth":2,"path":"QtGui/qx11info_x11.md","ref":"QtGui/qx11info_x11.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtGui/qevent.md","mtime":"2018-01-07T05:57:10.706Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-01-07T14:05:00.198Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"QClipboardEvent/QCloseEvent/QDropEvent/QHelpEvent/QHideEvent/QHoverEvent/QIconDragEvent/QInputEvent/QInputMethodEvent/QKeyEvent/QMouseEvent/QMoveEvent/QPaintEvent/QShowEvent/QTabletEvent/QToolBarChangeEvent/QTouchEvent/QUpdateLaterEvent/QWheelEvent/QWindowStateChangeEvent*","level":"1.3.1","depth":2,"next":{"title":"QAbstractButton*","level":"1.3.2","depth":2,"path":"QtGui/qabstractbutton.md","ref":"QtGui/qabstractbutton.md","articles":[]},"previous":{"title":"QtGui","level":"1.3","depth":1,"path":"QtGui/README.md","ref":"QtGui/README.md","articles":[{"title":"QClipboardEvent/QCloseEvent/QDropEvent/QHelpEvent/QHideEvent/QHoverEvent/QIconDragEvent/QInputEvent/QInputMethodEvent/QKeyEvent/QMouseEvent/QMoveEvent/QPaintEvent/QShowEvent/QTabletEvent/QToolBarChangeEvent/QTouchEvent/QUpdateLaterEvent/QWheelEvent/QWindowStateChangeEvent*","level":"1.3.1","depth":2,"path":"QtGui/qevent.md","ref":"QtGui/qevent.md","articles":[]},{"title":"QAbstractButton*","level":"1.3.2","depth":2,"path":"QtGui/qabstractbutton.md","ref":"QtGui/qabstractbutton.md","articles":[]},{"title":"QAction*","level":"1.3.3","depth":2,"path":"QtGui/qaction.md","ref":"QtGui/qaction.md","articles":[]},{"title":"QActionGroup*","level":"1.3.4","depth":2,"path":"QtGui/qactiongroup.md","ref":"QtGui/qactiongroup.md","articles":[]},{"title":"QApplication*","level":"1.3.5","depth":2,"path":"QtGui/qapplication.md","ref":"QtGui/qapplication.md","articles":[]},{"title":"QBitmap*","level":"1.3.6","depth":2,"path":"QtGui/qbitmap.md","ref":"QtGui/qbitmap.md","articles":[]},{"title":"QBoxLayout/QHBoxLayout/QVBoxLayout*","level":"1.3.7","depth":2,"path":"QtGui/qboxlayout.md","ref":"QtGui/qboxlayout.md","articles":[]},{"title":"QBrush/QBrushData/QGradient/QRadialGradient/QConicalGradient*","level":"1.3.8","depth":2,"path":"QtGui/qbrush.md","ref":"QtGui/qbrush.md","articles":[]},{"title":"QButtonGroup*","level":"1.3.9","depth":2,"path":"QtGui/qbuttongroup.md","ref":"QtGui/qbuttongroup.md","articles":[]},{"title":"QCalendarWidget*","level":"1.3.10","depth":2,"path":"QtGui/qcalendarwidget.md","ref":"QtGui/qcalendarwidget.md","articles":[]},{"title":"QCDEStyle*","level":"1.3.11","depth":2,"path":"QtGui/qcdestyle.md","ref":"QtGui/qcdestyle.md","articles":[]},{"title":"QCheckBox*","level":"1.3.12","depth":2,"path":"QtGui/qcheckbox.md","ref":"QtGui/qcheckbox.md","articles":[]},{"title":"QCleanlooksStyle*","level":"1.3.13","depth":2,"path":"QtGui/qcleanlooksstyle.md","ref":"QtGui/qcleanlooksstyle.md","articles":[]},{"title":"QClipboard*","level":"1.3.14","depth":2,"path":"QtGui/qclipboard.md","ref":"QtGui/qclipboard.md","articles":[]},{"title":"QColor*","level":"1.3.15","depth":2,"path":"QtGui/qcolor.md","ref":"QtGui/qcolor.md","articles":[]},{"title":"QColorDialog*","level":"1.3.16","depth":2,"path":"QtGui/qcolordialog.md","ref":"QtGui/qcolordialog.md","articles":[]},{"title":"QComboBox*","level":"1.3.17","depth":2,"path":"QtGui/qcombobox.md","ref":"QtGui/qcombobox.md","articles":[]},{"title":"QCursor/QCursorShape*","level":"1.3.18","depth":2,"path":"QtGui/qcursor.md","ref":"QtGui/qcursor.md","articles":[]},{"title":"QDialog*","level":"1.3.19","depth":2,"path":"QtGui/qdialog.md","ref":"QtGui/qdialog.md","articles":[]},{"title":"QErrorMessage*","level":"1.3.20","depth":2,"path":"QtGui/qerrormessage.md","ref":"QtGui/qerrormessage.md","articles":[]},{"title":"QFileDialog*","level":"1.3.21","depth":2,"path":"QtGui/qfiledialog.md","ref":"QtGui/qfiledialog.md","articles":[]},{"title":"QFont*","level":"1.3.22","depth":2,"path":"QtGui/qfont.md","ref":"QtGui/qfont.md","articles":[]},{"title":"QFontDialog*","level":"1.3.23","depth":2,"path":"QtGui/qfontdialog.md","ref":"QtGui/qfontdialog.md","articles":[]},{"title":"QFrame*","level":"1.3.24","depth":2,"path":"QtGui/qframe.md","ref":"QtGui/qframe.md","articles":[]},{"title":"QGridLayout*","level":"1.3.25","depth":2,"path":"QtGui/qgridlayout.md","ref":"QtGui/qgridlayout.md","articles":[]},{"title":"QGroupBox*","level":"1.3.26","depth":2,"path":"QtGui/qgroupbox.md","ref":"QtGui/qgroupbox.md","articles":[]},{"title":"QIcon/QIconSet*","level":"1.3.27","depth":2,"path":"QtGui/qicon.md","ref":"QtGui/qicon.md","articles":[]},{"title":"QImage*","level":"1.3.28","depth":2,"path":"QtGui/qimage.md","ref":"QtGui/qimage.md","articles":[]},{"title":"QInputDialog*","level":"1.3.29","depth":2,"path":"QtGui/qinputdialog.md","ref":"QtGui/qinputdialog.md","articles":[]},{"title":"QLabel*","level":"1.3.30","depth":2,"path":"QtGui/qlabel.md","ref":"QtGui/qlabel.md","articles":[]},{"title":"QLineEdit*","level":"1.3.31","depth":2,"path":"QtGui/qlineedit.md","ref":"QtGui/qlineedit.md","articles":[]},{"title":"QMainWindow*","level":"1.3.32","depth":2,"path":"QtGui/qmainwindow.md","ref":"QtGui/qmainwindow.md","articles":[]},{"title":"QMenu*","level":"1.3.33","depth":2,"path":"QtGui/qmenu.md","ref":"QtGui/qmenu.md","articles":[]},{"title":"QMessageBox*","level":"1.3.34","depth":2,"path":"QtGui/qmessagebox.md","ref":"QtGui/qmessagebox.md","articles":[]},{"title":"QPageSetupDialog*","level":"1.3.35","depth":2,"path":"QtGui/qpagesetupdialog.md","ref":"QtGui/qpagesetupdialog.md","articles":[]},{"title":"QPaintDevice*","level":"1.3.36","depth":2,"path":"QtGui/qpaintdevice.md","ref":"QtGui/qpaintdevice.md","articles":[]},{"title":"QPalette/QColorGroup*","level":"1.3.37","depth":2,"path":"QtGui/qpalette.md","ref":"QtGui/qpalette.md","articles":[]},{"title":"QPen*","level":"1.3.38","depth":2,"path":"QtGui/qpen.md","ref":"QtGui/qpen.md","articles":[]},{"title":"QPixmap*","level":"1.3.39","depth":2,"path":"QtGui/qpixmap.md","ref":"QtGui/qpixmap.md","articles":[]},{"title":"QPrintDialog*","level":"1.3.40","depth":2,"path":"QtGui/qprintdialog.md","ref":"QtGui/qprintdialog.md","articles":[]},{"title":"QProgressBar*","level":"1.3.41","depth":2,"path":"QtGui/qprogressbar.md","ref":"QtGui/qprogressbar.md","articles":[]},{"title":"QProgressDialog*","level":"1.3.42","depth":2,"path":"QtGui/qprogressdialog.md","ref":"QtGui/qprogressdialog.md","articles":[]},{"title":"QPushButton*","level":"1.3.43","depth":2,"path":"QtGui/qpushbutton.md","ref":"QtGui/qpushbutton.md","articles":[]},{"title":"QRadioButton*","level":"1.3.44","depth":2,"path":"QtGui/qradiobutton.md","ref":"QtGui/qradiobutton.md","articles":[]},{"title":"QSizePolicy*","level":"1.3.45","depth":2,"path":"QtGui/qsizepolicy.md","ref":"QtGui/qsizepolicy.md","articles":[]},{"title":"QStatusBar*","level":"1.3.46","depth":2,"path":"QtGui/qstatusbar.md","ref":"QtGui/qstatusbar.md","articles":[]},{"title":"QSpinBox*","level":"1.3.47","depth":2,"path":"QtGui/qspinbox.md","ref":"QtGui/qspinbox.md","articles":[]},{"title":"QTextEdit*","level":"1.3.48","depth":2,"path":"QtGui/qtextedit.md","ref":"QtGui/qtextedit.md","articles":[]},{"title":"QTableWidget/QTableWidgetItem/QTableWidgetSelectionRange*","level":"1.3.49","depth":2,"path":"QtGui/qtablewidget.md","ref":"QtGui/qtablewidget.md","articles":[]},{"title":"QWidget/QWidgetData*","level":"1.3.50","depth":2,"path":"QtGui/qwidget.md","ref":"QtGui/qwidget.md","articles":[]},{"title":"QX11EmbedContainer/QX11EmbedWidget*","level":"1.3.51","depth":2,"path":"QtGui/qx11embed_x11.md","ref":"QtGui/qx11embed_x11.md","articles":[]},{"title":"QX11Info*","level":"1.3.52","depth":2,"path":"QtGui/qx11info_x11.md","ref":"QtGui/qx11info_x11.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"QtGui/qevent.md","mtime":"2018-01-07T14:08:08.974Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2018-05-01T12:33:44.495Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
